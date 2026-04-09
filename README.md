@@ -71,10 +71,5 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 
 ---
 
-## 📬 Contato
-
-*(Opcional – adicionar depois se quiserem)*
-
----
 
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
