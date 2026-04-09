@@ -44,6 +44,19 @@ O site contará com as seguintes páginas:
 * **Brechó Online** 🛍️
   Venda de produtos para arrecadar fundos para a ONG.
 
+  ---
+
+## 🛠️ Tecnologias Utilizadas
+
+*(Essa parte pode ser ajustada conforme o projeto evoluir)*
+
+* HTML
+* CSS
+* JavaScript
+* BootStrap
+* MySql
+
+
 ---
 
 
@@ -68,6 +81,7 @@ Projeto desenvolvido por estudantes da FATEC Araraquara:
 ## 💡 Considerações Finais
 
 Esse projeto foi pensado não só como atividade acadêmica, mas também como uma forma de contribuir com uma causa importante. Esperamos que o sistema ajude a ONG a alcançar mais pessoas e, principalmente, encontrar lares para muitos gatinhos ❤️🐱
+
 
 ---
 
