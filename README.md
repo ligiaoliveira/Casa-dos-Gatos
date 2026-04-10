@@ -193,6 +193,8 @@ flowchart LR
 
 ## Diagrama de Estados
 
+### 👤 Visitante
+
 ```mermaid
 stateDiagram-v2
 
@@ -233,5 +235,80 @@ stateDiagram-v2
   EnviandoMensagem --> MensagemEnviada
   MensagemEnviada --> [*]
 ```
-  
+
+### 🙋 Voluntário
+
+```mermaid
+stateDiagram-v2
+
+  [*] --> AcessandoSite
+
+  AcessandoSite --> VisualizandoInformações
+  VisualizandoInformações --> VisualizandoVoluntários
+  VisualizandoInformações --> EntrandoEmContato
+
+  %% Contato
+  EntrandoEmContato --> EnviandoMensagem
+  EnviandoMensagem --> MensagemEnviada
+  MensagemEnviada --> [*]
+
+  %% Visualização
+  VisualizandoVoluntários --> [*]
+  ```
+
+### 🔐 Administrador
+
+```mermaid
+stateDiagram-v2
+
+  [*] --> Login
+
+  Login --> PainelAdmin : Login válido
+  Login --> [*] : login inválido
+
+  PainelAdmin --> GerenciandoGatos
+  PainelAdmin --> GerenciandoProdutos
+  PainelAdmin --> GerenciandoVoluntários
+  PainelAdmin --> GerenciandoDoações
+  PainelAdmin --> PublicandoTransparência
+  PainelAdmin --> RespondendoMensagens
+
+  %% Gatos
+  GerenciandoGatos --> CadastrandoGato
+  GerenciandoGatos --> EditandoGato
+  GerenciandoGatos --> RemovendoGato
+  CadastrandoGato --> GerenciandoGatos
+  EditandoGato --> GerenciandoGatos
+  RemovendoGato --> GerenciandoGatos
+
+  %% Produtos
+  GerenciandoProdutos --> CadastrandoProduto
+  GerenciandoProdutos --> EditandoProduto
+  GerenciandoProdutos --> RemovendoProduto
+  CadastrandoProduto --> GerenciandoProdutos
+  EditandoProduto --> GerenciandoProdutos
+  RemovendoProduto --> GerenciandoProdutos
+
+  %% Voluntários
+  GerenciandoVoluntários --> AnalisandoCadastro
+  AnalisandoCadastro --> Aprovado
+  AnalisandoCadastro --> Rejeitado
+  Aprovado --> GerenciandoVoluntários
+  Rejeitado --> GerenciandoVoluntários
+
+  %% Doações
+  GerenciandoDoações --> VisualizandoDoações
+  VisualizandoDoações --> GerenciandoDoações
+
+  %% Transparência
+  PublicandoTransparência --> PublicaçãoRealizada
+  PublicaçãoRealizada --> PainelAdmin
+
+  %% Mensagens
+  RespondendoMensagens --> MensagemRespondida
+  MensagemRespondida --> PainelAdmin
+
+  PainelAdmin --> [*] : logout
+```
+
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
