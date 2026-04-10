@@ -196,7 +196,7 @@ flowchart LR
 ```mermaid
 stateDiagram-v2
 
-  [*] --> VisitandoSite
+  [*] --> Visitando Site
 
   Visitando Site --> Visualizando Gatos : Acessar adoção
   Visitando Site --> Visualizando Brechó : Acessar brechó
