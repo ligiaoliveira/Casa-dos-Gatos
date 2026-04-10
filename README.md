@@ -111,6 +111,7 @@ flowchart LR
         UC14((Enviar mensagem))
         UC15((Doação de itens))
         UC16((Lista de itens aceitos))
+        UC17((Dados bancários para doar))
     end
 
     Visitante --> UC1
@@ -129,6 +130,7 @@ flowchart LR
     UC3 --> UC15
     UC4 --> UC12
     UC5 --> UC14
+    UC13 --> UC17
     UC15 --> UC16
 ```
 ---
@@ -148,6 +150,7 @@ flowchart LR
         UC5((Doação financeira))
         UC6((Doação de itens))
         UC7((Lista de itens aceitos))
+        UC8((Dados bancários para doar))
     end
 
     Voluntário --> UC1
@@ -157,6 +160,7 @@ flowchart LR
     UC2 --> UC4
     UC3 --> UC5
     UC3 --> UC6
+    UC5 --> UC8
     UC6 --> UC7
     
 ```
