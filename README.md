@@ -137,7 +137,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    Voluntario((Voluntário))
+    Voluntário((Voluntário))
 
     subgraph Área do Voluntário
         UC1((Ver voluntários))
@@ -150,8 +150,8 @@ flowchart LR
         UC7((Lista de itens aceitos))
     end
 
-    Voluntario --> UC1
-    Voluntario --> UC2
+    Voluntário --> UC1
+    Voluntário --> UC2
     Voluntário --> UC3
 
     UC2 --> UC4
