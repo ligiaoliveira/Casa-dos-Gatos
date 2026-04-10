@@ -93,7 +93,7 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 flowchart LR
     Visitante((Visitante))
 
-    subgraph Sistema ONG de Gatos - Área Pública
+    subgraph Área Pública
         UC1((Ver gatos para adoção))
         UC2((Ver mostruário do brechó))
         UC3((Fazer doação))
@@ -109,6 +109,8 @@ flowchart LR
         UC12((Formulário voluntário))
         UC13((Doação financeira))
         UC14((Enviar mensagem))
+        UC15((Doação de itens))
+        UC16((Lista de itens aceitos))
     end
 
     Visitante --> UC1
@@ -124,8 +126,10 @@ flowchart LR
     UC2 --> UC10
     UC2 --> UC11
     UC3 --> UC13
+    UC3 --> UC15
     UC4 --> UC12
     UC5 --> UC14
+    UC15 --> UC16
 ```
 ---
 
@@ -135,17 +139,51 @@ flowchart LR
 flowchart LR
     Voluntario((Voluntário))
 
-    subgraph Sistema ONG de Gatos - Área do Voluntário
+    subgraph Área do Voluntário
         UC1((Ver voluntários))
         UC2((Mídias sociais e contato))
+        UC3((Fazer doação))
 
-        UC3((Enviar mensagem))
+        UC4((Enviar mensagem))
+        UC5((Doação financeira))
+        UC6((Doação de itens))
+        UC7((Lista de itens aceitos))
     end
 
     Voluntario --> UC1
     Voluntario --> UC2
+    Voluntário --> UC3
 
-    UC2 --> UC3
+    UC2 --> UC4
+    UC3 --> UC5
+    UC3 --> UC6
+    UC6 --> UC7
+    
+```
+---
+
+### 🔐 Administrador
+
+```mermaid
+flowchart LR
+  Administrador((Administrador))
+
+  subgraph Área do Administrador
+      UC1((Gerenciar gatos))
+      UC2((Gerenciar produtos do brechó))
+      UC3((Gerenciar voluntários))
+      UC4((Gerenciar doações))
+      UC5((Publlicar transparência))
+      UC6((Responder mensagens))
+  end
+
+  Administrador --> UC1
+  Administrador --> UC2
+  Administrador --> UC3
+  Administrador --> UC4
+  Administrador --> UC5
+  Administrador --> UC6
+
 ```
 ---
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
