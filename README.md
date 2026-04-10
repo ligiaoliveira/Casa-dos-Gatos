@@ -82,7 +82,6 @@ Projeto desenvolvido por estudantes da FATEC Araraquara:
 
 Esse projeto foi pensado não só como atividade acadêmica, mas também como uma forma de contribuir com uma causa importante. Esperamos que o sistema ajude a ONG a alcançar mais pessoas e, principalmente, encontrar lares para muitos gatinhos ❤️🐱
 
-
 ---
 
 ## Diagramas de Caso de Uso
@@ -235,6 +234,7 @@ stateDiagram-v2
   EnviandoMensagem --> MensagemEnviada
   MensagemEnviada --> [*]
 ```
+---
 
 ### 🙋 Voluntário
 
@@ -255,6 +255,7 @@ stateDiagram-v2
   %% Visualização
   VisualizandoVoluntários --> [*]
   ```
+---
 
 ### 🔐 Administrador
 
@@ -262,16 +263,27 @@ stateDiagram-v2
 stateDiagram-v2
 
   [*] --> Login
-
   Login --> PainelAdmin : Login válido
   Login --> [*] : login inválido
 
+  %% HUB CENTRAL
+  state PainelAdmin
+  
+  %% Distribuição equilibrada
   PainelAdmin --> GerenciandoGatos
   PainelAdmin --> GerenciandoProdutos
   PainelAdmin --> GerenciandoVoluntários
   PainelAdmin --> GerenciandoDoações
   PainelAdmin --> PublicandoTransparência
   PainelAdmin --> RespondendoMensagens
+
+  %% Retornos
+  GerenciandoGatos --> PainelAdmin
+  GerenciandoProdutos --> PainelAdmin
+  GerenciandoVoluntários --> PainelAdmin
+  GerenciandoDoações --> PainelAdmin
+  PublicandoTransparência --> PainelAdmin
+  RespondendoMensagens --> PainelAdmin
 
   %% Gatos
   GerenciandoGatos --> CadastrandoGato
@@ -310,5 +322,6 @@ stateDiagram-v2
 
   PainelAdmin --> [*] : logout
 ```
+---
 
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
