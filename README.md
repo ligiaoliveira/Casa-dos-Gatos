@@ -85,13 +85,9 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 
 ---
 
-## Diagrama de Caso de Uso
+## Diagramas de Caso de Uso
 
 ### 👤 Visitante
-
-# 🐱 Sistema ONG de Gatos - Diagramas de Caso de Uso
-
-## 👤 Visitante
 
 ```mermaid
 flowchart LR
@@ -133,4 +129,23 @@ flowchart LR
 ```
 ---
 
+### 🙋 Voluntário
+
+```mermaid
+flowchart LR
+    Voluntario((Voluntário))
+
+    subgraph Sistema ONG de Gatos - Área do Voluntário
+        UC1((Ver voluntários))
+        UC2((Mídias sociais e contato))
+
+        UC3((Enviar mensagem))
+    end
+
+    Voluntario --> UC1
+    Voluntario --> UC2
+
+    UC2 --> UC3
+```
+---
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
