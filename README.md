@@ -190,4 +190,49 @@ flowchart LR
 
 ```
 ---
+
+## Diagrama de Estados
+
+```mermaid
+stateDiagram-v2
+
+  [*] --> VisitandoSite
+
+  Visitando Site --> Visualizando Gatos : Acessar adoção
+  Visitando Site --> Visualizando Brechó : Acessar brechó
+  Visitando Site --> Visualizando Doação : Acessar doações
+  Visitando Site --> Voluntariado : Acessar voluntariado
+  Visitando Site --> Contato : Acessar contato
+
+  %% Gatos
+  Visualizando Gatos --> Filtrando Gatos : Aplicar filtro
+  Filtrando Gatos --> Visualizando Gatos
+  Visualizando Gatos --> Detalhes Gato : Ver detalhes
+  Detalhes Gato --> Contato : Interesse no gato
+
+  %% Brechó
+  Visualizando Brechó --> Detalhes Produto : Ver produto
+  Detalhes Produto --> WhatsApp : Ir para o contato
+  WhatsApp --> [*]
+
+  %% Doação
+  Visualizando doação --> Visualizando dados bancários : Ver dados para doação
+  Visualizando dados bancários --> [*]
+
+  %% Voluntariado
+  Voluntariado --> Preenchendo Formulário
+  Preenchendo Formulário --> Enviado
+  Enviado --> Aguardando Aprovação
+  Aguardando Aprovação --> Aprovado
+  Aguardando Aprovação --> Rejeitado
+  Aprovado --> [*]
+  Rejeitado --> [*]
+
+  %% Contato
+  Contato --> Enviando mensagem
+  Enviando mensagem --> Mensagem enviada
+  Mensagem enviada --> [*]
+end
+```
+  
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
