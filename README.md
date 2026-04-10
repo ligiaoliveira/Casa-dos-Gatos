@@ -130,7 +130,7 @@ flowchart LR
     UC3 --> UC13
     UC4 --> UC12
     UC5 --> UC14
-
+```
 ---
 
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
