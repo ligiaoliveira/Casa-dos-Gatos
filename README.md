@@ -196,43 +196,42 @@ flowchart LR
 ```mermaid
 stateDiagram-v2
 
-  [*] --> Visitando Site
+  [*] --> VisitandoSite
 
-  Visitando Site --> Visualizando Gatos : Acessar adoção
-  Visitando Site --> Visualizando Brechó : Acessar brechó
-  Visitando Site --> Visualizando Doação : Acessar doações
-  Visitando Site --> Voluntariado : Acessar voluntariado
-  Visitando Site --> Contato : Acessar contato
+  VisitandoSite --> VisualizandoGatos : Acessar adoção
+  VisitandoSite --> VisualizandoBrechó : Acessar brechó
+  VisitandoSite --> VisualizandoDoação : Acessar doações
+  VisitandoSite --> Voluntariado : Acessar voluntariado
+  VisitandoSite --> Contato : Acessar contato
 
   %% Gatos
-  Visualizando Gatos --> Filtrando Gatos : Aplicar filtro
-  Filtrando Gatos --> Visualizando Gatos
-  Visualizando Gatos --> Detalhes Gato : Ver detalhes
-  Detalhes Gato --> Contato : Interesse no gato
+  VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
+  FiltrandoGatos --> VisualizandoGatos
+  VisualizandoGatos --> DetalhesGato : Ver detalhes
+  DetalhesGato --> Contato : Interesse no gato
 
   %% Brechó
-  Visualizando Brechó --> Detalhes Produto : Ver produto
-  Detalhes Produto --> WhatsApp : Ir para o contato
+  VisualizandoBrechó --> DetalhesProduto : Ver produto
+  DetalhesProduto --> WhatsApp : Ir para o contato
   WhatsApp --> [*]
 
   %% Doação
-  Visualizando doação --> Visualizando dados bancários : Ver dados para doação
-  Visualizando dados bancários --> [*]
+  VisualizandoDoação --> VisualizandoDadosBancários : Ver dados para doação
+  VisualizandoDadosBancários --> [*]
 
   %% Voluntariado
-  Voluntariado --> Preenchendo Formulário
-  Preenchendo Formulário --> Enviado
-  Enviado --> Aguardando Aprovação
-  Aguardando Aprovação --> Aprovado
-  Aguardando Aprovação --> Rejeitado
+  Voluntariado --> PreenchendoFormulário
+  PreenchendoFormulário --> Enviado
+  Enviado --> AguardandoAprovação
+  AguardandoAprovação --> Aprovado
+  AguardandoAprovação --> Rejeitado
   Aprovado --> [*]
   Rejeitado --> [*]
 
   %% Contato
-  Contato --> Enviando mensagem
-  Enviando mensagem --> Mensagem enviada
-  Mensagem enviada --> [*]
-end
+  Contato --> EnviandoMensagem
+  EnviandoMensagem --> MensagemEnviada
+  MensagemEnviada --> [*]
 ```
   
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
