@@ -13,22 +13,22 @@ inicio
 
       escreval("=== ONG DE GATOS ===")
       escreval("1 - Como ajudar")
-      escreval("2 - Ver volunt·rios")
+      escreval("2 - Ver volunt√°rios")
       escreval("3 - Se voluntariar")
-      escreval("4 - AdoÁ„o")
-      escreval("5 - BrechÛ")
-      escreval("6 - TransparÍncia")
+      escreval("4 - Ado√ß√£o")
+      escreval("5 - Brech√≥")
+      escreval("6 - Transpar√™ncia")
       escreval("0 - Sair")
 
-      escreva("Escolha uma opÁ„o: ")
+      escreva("Escolha uma op√ß√£o: ")
       leia(opcao)
 
       se opcao = 1 entao
-         escreval("Dados banc·rios para doaÁ„o")
+         escreval("Dados banc√°rios para doa√ß√£o")
 
       senao
          se opcao = 2 entao
-            escreval("Lista de volunt·rios")
+            escreval("Lista de volunt√°rios")
 
          senao
             se opcao = 3 entao
@@ -39,38 +39,38 @@ inicio
                se cidade <> "Araraquara" entao
                   escreval("Atendemos apenas Araraquara")
                senao
-                  escreval("Cadastro enviado para an·lise")
+                  escreval("Cadastro enviado para an√°lise")
 
                   escreva("Aprovado? (sim/nao): ")
                   leia(aprovado)
 
                   se aprovado = "sim" entao
-                     escreval("VocÍ foi aprovado!")
+                     escreval("Voc√™ foi aprovado!")
                   senao
-                     escreval("Cadastro n„o aprovado")
+                     escreval("Cadastro n√£o aprovado")
                   fimse
 
                fimse
 
             senao
                se opcao = 4 entao
-                  escreval("Mostru·rio de gatos")
+                  escreval("Mostru√°rio de gatos")
                   escreval("Ver detalhes")
                   escreval("Entrar em contato")
 
                senao
                   se opcao = 5 entao
-                     escreval("Mostru·rio do brechÛ")
+                     escreval("Mostru√°rio do brech√≥")
                      escreval("Selecionar produto")
                      escreval("Abrir WhatsApp")
 
                   senao
                      se opcao = 6 entao
-                        escreval("RelatÛrios de transparÍncia")
+                        escreval("Relat√≥rios de transpar√™ncia")
 
                      senao
                         se opcao <> 0 entao
-                           escreval("OpÁ„o inv·lida")
+                           escreval("Op√ß√£o inv√°lida")
                         fimse
                      fimse
                   fimse
