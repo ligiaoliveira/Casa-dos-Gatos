@@ -1,6 +1,6 @@
 ```mermaid
 erDiagram
-    USUARIO ||-o{ VOLUNTARIO : "se_cadastra"
+    USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
     USUARIO ||--o{ ADOCAO_INTERESSE : "tem_interesse"
     USUARIO ||--o{ PEDIDO_BRECHO : "compra"
     
