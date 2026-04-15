@@ -101,7 +101,7 @@ S-->>U: Mostra Horarios Disponiveis Para Atendimento
 U->>S: Escolhe Horario
 S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ```
-### 💸 Doar [(LinKRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/sequencia_doacao.md)
+### 💸 Doar [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/sequencia_doacao.md)
 ```mermaid
 sequenceDiagram
 participant U as Usuario
@@ -137,7 +137,7 @@ S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ```
 ## Diagramas de Caso de Uso
 
-### 👤 Visitante[(Link)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_visitante.md)
+### 👤 Visitante [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_visitante.md)
 
 ```mermaid
 flowchart LR
@@ -185,7 +185,7 @@ flowchart LR
 ```
 ---
 
-### 🙋 Voluntário[(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_voluntario.md)
+### 🙋 Voluntário [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_voluntario.md)
 
 ```mermaid
 flowchart LR
@@ -216,7 +216,7 @@ flowchart LR
 ```
 ---
 
-### 🔐 Administrador[(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_admin.md)
+### 🔐 Administrador [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_admin.md)
 
 ```mermaid
 flowchart LR
@@ -308,7 +308,7 @@ stateDiagram-v2
   ```
 ---
 
-### 🔐 Administrador [(LinkRaw)[(https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_admin.md)
+### 🔐 Administrador [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_admin.md)
 
 ```mermaid
 stateDiagram-v2
