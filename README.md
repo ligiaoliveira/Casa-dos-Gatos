@@ -84,7 +84,7 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 
 ---
 ## Diagramas de Sequencia
-### Adotar
+### 🐈 Adotar
 ```mermaid
 sequenceDiagram
 participant U as Usuario
@@ -101,7 +101,7 @@ S-->>U: Mostra Horarios Disponiveis Para Atendimento
 U->>S: Escolhe Horario
 S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ```
-### Doar 
+### 💸 Doar 
 ```mermaid
 sequenceDiagram
 participant U as Usuario
@@ -118,7 +118,7 @@ S->>B: Envia a Transação
 B-->>B:Guarda o Valor No Banco
 S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
 ```
-### Brécho
+### 🛍 Brécho
 ```mermaid
 sequenceDiagram
 participant U as Usuario
