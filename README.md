@@ -427,7 +427,7 @@ erDiagram
     }
 ```
 ---
-## Diagrama De Classe
+## Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
 ```mermaid 
 classDiagram
     class Usuario {
