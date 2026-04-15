@@ -138,7 +138,6 @@ S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ## Diagramas de Caso de Uso
 
 ### 👤 Visitante [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_visitante.md)
-
 ```mermaid
 flowchart LR
     Visitante((Visitante))
@@ -185,7 +184,7 @@ flowchart LR
 ```
 ---
 
-### 🙋 Voluntário [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_voluntario.md)
+### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_voluntario.md)
 
 ```mermaid
 flowchart LR
@@ -216,7 +215,7 @@ flowchart LR
 ```
 ---
 
-### 🔐 Administrador [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/casos_admin.md)
+### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/casos_admin.md)
 
 ```mermaid
 flowchart LR
@@ -243,7 +242,7 @@ flowchart LR
 
 ## Diagrama de Estados
 
-### 👤 Visitante [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_visitante.md)
+### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
 
 ```mermaid
 stateDiagram-v2
@@ -308,7 +307,7 @@ stateDiagram-v2
   ```
 ---
 
-### 🔐 Administrador [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_admin.md)
+### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_admin.md)
 
 ```mermaid
 stateDiagram-v2
@@ -374,7 +373,7 @@ stateDiagram-v2
   PainelAdmin --> [*] : logout
 ```
 ---
-## Diagrama de Entidade/Relacionamento [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/diagrama_er.md)
+## Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
     USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
