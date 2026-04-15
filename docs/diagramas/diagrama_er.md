@@ -49,3 +49,4 @@ erDiagram
         info Historia
         info Objetivos
     }
+```
