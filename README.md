@@ -375,5 +375,22 @@ stateDiagram-v2
 ```
 ---
 
+## 📝 Projeto Interface
+
+<img width="1341" height="598" alt="Screenshot_1" src="https://github.com/user-attachments/assets/573e8152-10b5-44c2-ba41-4da30eb212a5" />
+
+<img width="1346" height="530" alt="Screenshot_2" src="https://github.com/user-attachments/assets/9ae98ed7-c66b-4bc1-b688-2cdba6f7b37e" />
+
+<img width="1348" height="598" alt="Screenshot_3" src="https://github.com/user-attachments/assets/f5ab5674-6c2b-47ad-a62a-61f985708f4d" />
+
+<img width="1345" height="610" alt="Screenshot_4" src="https://github.com/user-attachments/assets/ca1ce9ca-f30c-4581-afe3-86521a79a4cd" />
+
+<img width="1343" height="582" alt="Screenshot_5" src="https://github.com/user-attachments/assets/9d2732b8-6639-40a3-8561-bd3e7a3bf8a7" />
+
+<img width="1348" height="611" alt="Screenshot_6" src="https://github.com/user-attachments/assets/c75ea18d-7b3e-45f7-83d2-1346843e4876" />
+
+<img width="372" height="549" alt="Screenshot_7" src="https://github.com/user-attachments/assets/feb291d1-edc0-46dc-acb5-cc15887435a2" />
+
+---
 
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
