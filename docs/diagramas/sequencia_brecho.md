@@ -13,3 +13,4 @@ B-->>S: Envia Horarios De Atendimento
 S-->>U: Mostra Horarios Disponiveis Para Atendimento
 U->>S: Escolhe Horario
 S-->>U: Envia Mensagem "Data Marcada! Até Logo"
+```
