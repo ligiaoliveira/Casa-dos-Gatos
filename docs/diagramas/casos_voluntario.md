@@ -23,3 +23,9 @@ flowchart LR
     UC3 --> UC6
     UC5 --> UC8
     UC6 --> UC7
+
+    UC2 --> UC4
+    UC3 --> UC5
+    UC3 --> UC6
+    UC5 --> UC8
+    UC6 --> UC7
