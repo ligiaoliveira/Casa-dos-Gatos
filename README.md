@@ -84,7 +84,7 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 
 ---
 ## Diagramas de Sequencia
-### 🐈 Adotar[(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/sequencia_adocao.md)
+### 🐈 Adotar[(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
 sequenceDiagram
 participant U as Usuario
