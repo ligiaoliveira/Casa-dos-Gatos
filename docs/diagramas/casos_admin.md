@@ -1,6 +1,7 @@
 ```mermaid
 flowchart LR
   Administrador((Administrador))
+
   subgraph Área do Administrador
       UC1((Gerenciar gatos))
       UC2((Gerenciar produtos do brechó))
@@ -9,9 +10,12 @@ flowchart LR
       UC5((Publlicar transparência))
       UC6((Responder mensagens))
   end
+
   Administrador --> UC1
   Administrador --> UC2
   Administrador --> UC3
   Administrador --> UC4
   Administrador --> UC5
   Administrador --> UC6
+
+```
