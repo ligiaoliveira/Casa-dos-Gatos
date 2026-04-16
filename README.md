@@ -373,7 +373,7 @@ stateDiagram-v2
   PainelAdmin --> [*] : logout
 ```
 ---
-## Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
+## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
     USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
@@ -427,7 +427,7 @@ erDiagram
     }
 ```
 ---
-## Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
+## 🪪Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
 ```mermaid 
 classDiagram
     class Usuario {
