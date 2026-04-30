@@ -491,7 +491,7 @@ classDiagram
 
 <img width="1345" height="610" alt="Screenshot_4" src="https://github.com/user-attachments/assets/ca1ce9ca-f30c-4581-afe3-86521a79a4cd" />
 
-<img width="1440" height="1932" alt="Frame 1" src="https://github.com/user-attachments/assets/d4af7528-179b-408d-8a26-d7d56b5abac4" />
+<img width="1440" height="1932" alt="Frame 1 (1)" src="https://github.com/user-attachments/assets/ed289e2d-e8f6-46f6-95d2-bc62e5c4834b" />
 
 <img width="1343" height="582" alt="Screenshot_5" src="https://github.com/user-attachments/assets/9d2732b8-6639-40a3-8561-bd3e7a3bf8a7" />
 
