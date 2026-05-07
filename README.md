@@ -508,9 +508,6 @@ classDiagram
 ### Voluntários
 <img width="790" height="452" alt="Screenshot_9" src="https://github.com/user-attachments/assets/4fff794a-a16a-432b-8e67-abd3163e3434" />
 
-### Brechó
-<img width="948" height="450" alt="Screenshot_10" src="https://github.com/user-attachments/assets/e06c7321-edaf-4eb9-a586-cc5bed0532a6" />
-
 ### Doações
 <img width="790" height="450" alt="Screenshot_11" src="https://github.com/user-attachments/assets/494e0817-0296-4851-99d8-b6d6140484d5" />
 
