@@ -83,58 +83,6 @@ Projeto desenvolvido por estudantes da FATEC Araraquara:
 Esse projeto foi pensado não só como atividade acadêmica, mas também como uma forma de contribuir com uma causa importante. Esperamos que o sistema ajude a ONG a alcançar mais pessoas e, principalmente, encontrar lares para muitos gatinhos ❤️🐱
 
 ---
-## Diagramas de Sequencia
-### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
-```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Escolhe o Menu "Adoção"
-S->>B:Procura Gatos Disponiveis
-B-->>S:Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
-S-->>U:Repassa ID Para a Pagina Do Usuario
-U->>S:Escolhe o Gato
-S->>B:Procura Horario de Atendimento Disponivel
-B-->>S: Envia Horarios De Atendimento
-S-->>U: Mostra Horarios Disponiveis Para Atendimento
-U->>S: Escolhe Horario
-S-->>U: Envia Mensagem "Data Marcada! Até Logo"
-```
-### 💸 Doar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_doacao.md)
-```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Escolhe Menu "Doar"
-S-->>U:Exibe Aba "Insira Valor Da Doação"
-U->>S:Insere Valor Em R$
-S->>B:Guarda valor e Pede ID da Conta Bancaria Da ONG
-B-->>S: Envia ID Em Forma De QRcode Para Envio Do Valor
-S-->>U:Exibe QRcode Na Tela Com Mensagem "Escaneie o QRcode Para Enviar a Doação"
-U->>S:Escaneia QRcode
-S->>B: Envia a Transação
-B-->>B:Guarda o Valor No Banco
-S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
-```
-### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
-```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Seleciona Menu "Brécho"
-S->>B:Procura itens disponiveis à venda
-B-->>S:Envia itens
-S-->>U:Exibe itens
-U->>S:Escolhe item
-S->>B:Procura Horario de Atendimento Disponivel
-B-->>S: Envia Horarios De Atendimento
-S-->>U: Mostra Horarios Disponiveis Para Atendimento
-U->>S: Escolhe Horario
-S-->>U: Envia Mensagem "Data Marcada! Até Logo"
-```
 ## Diagramas de Caso de Uso
 
 ### 👤 Visitante [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_visitante.md)
@@ -373,6 +321,62 @@ stateDiagram-v2
   PainelAdmin --> [*] : logout
 ```
 ---
+
+## Diagramas de Sequencia
+### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
+```mermaid
+sequenceDiagram
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Escolhe o Menu "Adoção"
+S->>B:Procura Gatos Disponiveis
+B-->>S:Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
+S-->>U:Repassa ID Para a Pagina Do Usuario
+U->>S:Escolhe o Gato
+S->>B:Procura Horario de Atendimento Disponivel
+B-->>S: Envia Horarios De Atendimento
+S-->>U: Mostra Horarios Disponiveis Para Atendimento
+U->>S: Escolhe Horario
+S-->>U: Envia Mensagem "Data Marcada! Até Logo"
+```
+### 💸 Doar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_doacao.md)
+```mermaid
+sequenceDiagram
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Escolhe Menu "Doar"
+S-->>U:Exibe Aba "Insira Valor Da Doação"
+U->>S:Insere Valor Em R$
+S->>B:Guarda valor e Pede ID da Conta Bancaria Da ONG
+B-->>S: Envia ID Em Forma De QRcode Para Envio Do Valor
+S-->>U:Exibe QRcode Na Tela Com Mensagem "Escaneie o QRcode Para Enviar a Doação"
+U->>S:Escaneia QRcode
+S->>B: Envia a Transação
+B-->>B:Guarda o Valor No Banco
+S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
+```
+### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
+```mermaid
+sequenceDiagram
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Seleciona Menu "Brécho"
+S->>B:Procura itens disponiveis à venda
+B-->>S:Envia itens
+S-->>U:Exibe itens
+U->>S:Escolhe item
+S->>B:Procura Horario de Atendimento Disponivel
+B-->>S: Envia Horarios De Atendimento
+S-->>U: Mostra Horarios Disponiveis Para Atendimento
+U->>S: Escolhe Horario
+S-->>U: Envia Mensagem "Data Marcada! Até Logo"
+```
+
+
+
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
