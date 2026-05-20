@@ -392,38 +392,39 @@ S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
 sequenceDiagram
     participant U as Usuário 
     participant S as Site
-    participant BD as Banco de Dados
+    participant B as Banco de Dados
     participant P as PIX
 
-U->>S: Seleciona menu "Brechó"
-S-->>U: Exibe produtos
-U->>S: Adiciona produto ao carrinho
-S->>BD: Atualiza carrinho
-BD-->>S: Carrinho atualizado
+U->>S: Seleciona Menu "Brechó"
+S-->>U: Exibe Produtos
+U->>S: Adiciona Produto ao Carrinho
+S->>B: Atualiza Carrinho
+B-->>S: Carrinho Atualizado
 
-alt U continua comprando
-U->>S: Fecha sacola e continua comprando
-S-->>U: Exibe catálogo novamente
+alt Usuário continua comprando
+U->>S: Fecha Sacola e Continua Comprando
+S-->>U: Exibe Catálogo Novamente
 
-else U finaliza compra
-U->>S: Finaliza compra
-S->>BD: Solicita resumo do pedido
-BD-->>S: Retorna resumo do pedido e valor total
-BD->>P: Gera pagamento PIX
-P-->>BD: Retorna QR Code
-BD-->>S: Envia QR Code
-S-->>U: Mostra QR Code e valor
-U->>P: Realiza pagamento
+else Usuário finaliza compra
+U->>S: Finaliza Compra
+S->>B: Solicita Resumo do Pedido
+B-->>S: Retorna Resumo do Pedido e Valor Total
+U->>S:Escolhe Método de Pagamento
+B->>P: Gera Pagamento de Acordo com o Método Escolhido
+P-->>B: Retorna Forma de Pagamento
+B-->>S: Envia Forma de Pagamento
+S-->>U: Mostra Forma de Pagamento e Valor
+U->>P: Realiza Pagamento
 U->>S: Clica em "Já paguei"
-S->>BD: Verifica pagamento
-BD->>P: Consulta status do PIX
-P-->>BD: Pagamento confirmado
-BD-->>S: Libera confirmação
-S-->>U: Exibe página de pagamento confirmado
+S->>B: Verifica Pagamento
+B->>P: Consulta Status do Pagamento
+P-->>B: Pagamento Confirmado
+B-->>S: Libera Confirmação
+S-->>U: Exibe página de Pagamento Confirmado
 
-else U volta ao carrinho
+else Usuário volta ao carrinho
 U->>S: Clica em "Voltar ao carrinho"
-S-->>U: Exibe carrinho novamente
+S-->>U: Exibe Carrinho Novamente
 end
 ```
 ---
@@ -433,20 +434,21 @@ sequenceDiagram
     participant E as Empresa
     participant F as Formulário
     participant S as Sistema
-    participant BD as Banco de Dados
+    participant B as Banco de Dados
 
-    E ->> F: Preenche dados da empresa
-    E ->> F: Informa contato e mensagem
-    E ->> F: Clica em "Enviar contato"
-    F ->> S: Enviar informações
-    S ->> S: Validar dados
+    E->>F: Preenche Dados da Empresa
+    E->>F: Informa Contato e Mensagem
+    E->>F: Clica em "Enviar contato"
+    F->>S: Envia informações
+    S->>S: Validar dados
 
     alt Dados válidos
-        S ->> BD: Salvar solicitação
-        BD ->> S: Confirma salvamento
-        S ->> E: Contato enviado com sucesso
+        S->>B: Salvar Solicitação
+        B->>S: Confirma Salvamento
+        S->>E: Contato Enviado com Sucesso
+        
     else Dados inválidos
-        S ->> E: Exibir mensagem de erro
+        S ->> E: Exibir Mensagem de Erro
     end
 ```
 ---
