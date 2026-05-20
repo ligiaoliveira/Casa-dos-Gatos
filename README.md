@@ -211,6 +211,7 @@ stateDiagram-v2
   VisitandoSite --> VisualizandoBrechó : Acessar brechó
   VisitandoSite --> VisualizandoDoação : Acessar doações
   VisitandoSite --> Voluntariado : Acessar voluntariado
+  VisitandoSite --> VisualizandoEmpresasParceiras : Acessar Empresas Parceiras
   VisitandoSite --> Contato : Acessar contato
 
   %% Gatos
@@ -237,6 +238,9 @@ stateDiagram-v2
   Aprovado --> [*]
   Rejeitado --> [*]
 
+  %% Empresas Parceiras
+  VisualizandoEmpresasParceiras --> [*]
+
   %% Contato
   Contato --> EnviandoMensagem
   EnviandoMensagem --> MensagemEnviada
@@ -254,6 +258,7 @@ stateDiagram-v2
   AcessandoSite --> VisualizandoInformações
   VisualizandoInformações --> VisualizandoVoluntários
   VisualizandoInformações --> EntrandoEmContato
+  VisualizandoInformações --> VisualizandoEmpresasPaceiras
 
   %% Contato
   EntrandoEmContato --> EnviandoMensagem
@@ -262,6 +267,7 @@ stateDiagram-v2
 
   %% Visualização
   VisualizandoVoluntários --> [*]
+  VisualizandoEmpresasPaceiras --> [*]
   ```
 ---
 
@@ -281,6 +287,7 @@ stateDiagram-v2
   PainelAdmin --> GerenciandoGatos
   PainelAdmin --> GerenciandoProdutos
   PainelAdmin --> GerenciandoVoluntários
+  PainelAdmin --> GerenciandoEmpresasParceiras
   PainelAdmin --> GerenciandoDoações
   PainelAdmin --> PublicandoTransparência
   PainelAdmin --> RespondendoMensagens
@@ -289,6 +296,7 @@ stateDiagram-v2
   GerenciandoGatos --> PainelAdmin
   GerenciandoProdutos --> PainelAdmin
   GerenciandoVoluntários --> PainelAdmin
+  GerenciandoEmpresasParceiras --> PainelAdmin
   GerenciandoDoações --> PainelAdmin
   PublicandoTransparência --> PainelAdmin
   RespondendoMensagens --> PainelAdmin
@@ -315,6 +323,13 @@ stateDiagram-v2
   AnalisandoCadastro --> Rejeitado
   Aprovado --> GerenciandoVoluntários
   Rejeitado --> GerenciandoVoluntários
+
+  %% Empresas Parceiras
+  GerenciandoEmpresasParceiras --> AnalisandoCadastro
+  AnalisandoCadastro --> Aprovado
+  AnalisandoCadastro --> Rejeitado
+  Aprovado --> GerenciandoEmpresasParceiras
+  Rejeitado --> GerenciandoEmpresasParceiras
 
   %% Doações
   GerenciandoDoações --> VisualizandoDoações
