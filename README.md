@@ -382,7 +382,7 @@ sequenceDiagram
 
 U->>S: Seleciona menu "Brechó"
 S-->>U: Exibe produtos
-U->>s: Adiciona produto ao carrinho
+U->>S: Adiciona produto ao carrinho
 S->>BD: Atualiza carrinho
 BD-->>S: Carrinho atualizado
 
