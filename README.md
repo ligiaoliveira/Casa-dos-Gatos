@@ -374,20 +374,45 @@ S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
 
 ### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
 ```mermaid
+## Diagrama de Sequência — Compra no Brechó
+
+```mermaid
 sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Seleciona Menu "Brécho"
-S->>B:Procura itens disponiveis à venda
-B-->>S:Envia itens
-S-->>U:Exibe itens
-U->>S:Escolhe item
-S->>B:Procura Horario de Atendimento Disponivel
-B-->>S: Envia Horarios De Atendimento
-S-->>U: Mostra Horarios Disponiveis Para Atendimento
-U->>S: Escolhe Horario
-S-->>U: Envia Mensagem "Data Marcada! Até Logo"
+    participant U as Usuário 
+    participant S as Site
+    participant BD as Banco de Dados
+    participant P as PIX
+
+U->>S: Seleciona menu "Brechó"
+S-->>U: Exibe produtos
+U->>s: Adiciona produto ao carrinho
+S->>BD: Atualiza carrinho
+BD-->>S: Carrinho atualizado
+
+alt U continua comprando
+U->>S: Fecha sacola e continua comprando
+S-->>U: Exibe catálogo novamente
+
+else U finaliza compra
+U->>S: Finaliza compra
+S->>BD: Solicita resumo do pedido
+BD-->>S: Retorna resumo do pedido e valor total
+BD->>P: Gera pagamento PIX
+P-->>BD: Retorna QR Code
+BD-->>S: Envia QR Code
+S-->>U: Mostra QR Code e valor
+U->>P: Realiza pagamento
+U->>S: Clica em "Já paguei"
+S->>BD: Verifica pagamento
+BD->>P: Consulta status do PIX
+P-->>BD: Pagamento confirmado
+BD-->>S: Libera confirmação
+S-->>U: Exibe página de pagamento confirmado
+
+else U volta ao carrinho
+U->>S: Clica em "Voltar ao carrinho"
+S-->>U: Exibe carrinho novamente
+end
 ```
 ---
 
