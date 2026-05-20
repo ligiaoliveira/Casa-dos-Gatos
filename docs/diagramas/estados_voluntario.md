@@ -6,6 +6,7 @@ stateDiagram-v2
   AcessandoSite --> VisualizandoInformações
   VisualizandoInformações --> VisualizandoVoluntários
   VisualizandoInformações --> EntrandoEmContato
+  VisualizandoInformações --> VisualizandoEmpresasPaceiras
 
   %% Contato
   EntrandoEmContato --> EnviandoMensagem
@@ -14,4 +15,6 @@ stateDiagram-v2
 
   %% Visualização
   VisualizandoVoluntários --> [*]
+  VisualizandoEmpresasPaceiras --> [*]
+
   ```
