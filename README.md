@@ -347,7 +347,7 @@ stateDiagram-v2
 ```
 ---
 
-## Diagramas de Sequencia
+## Diagramas de Sequência
 
 ### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
@@ -456,12 +456,15 @@ sequenceDiagram
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
-    USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
-    USUARIO ||--o{ ADOCAO_INTERESSE : "tem_interesse"
-    USUARIO ||--o{ PEDIDO_BRECHO : "compra"
+    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
+    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
+    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
+    USUARIO ||--o{ FINANCEIRO : "acessa informações"
+    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
+    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
     
     CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
-    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "esta_no"
+    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
 
     USUARIO {
         info Nome
@@ -505,6 +508,15 @@ erDiagram
         info Historia
         info Objetivos
     }
+    
+    EMPRESA_PARCEIRA {
+        info Nome_da_Empresa
+        info Pessoa_de_Contato
+        info E-mail
+        info Telefone
+        info Como_Gostaria_de_Ajudar
+    }
+
 ```
 ---
 ## 📁Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
@@ -526,6 +538,15 @@ classDiagram
         DiasDisponiveis
         Habilidades
         ExperienciaPrevia
+        enviarFormulario()
+    }
+
+    class Empresa Parceira {
+        NomeDaEmpresa
+        PessoaDeContato
+        E-mail
+        Telefone
+        ComoGostariaDeAjudar
         enviarFormulario()
     }
 
@@ -554,7 +575,8 @@ classDiagram
         gerarRelatorio()
     }
 
-    Usuario "1" -- "0..1" Voluntario : se torna
+    Usuario "1" -- "0..1" Voluntario : se candidata
+    Usuario "1" -- "0..1" Empresa Parceira : se candidata
     Usuario "1" -- "0..*" Gato : consulta/adota
     Usuario "1" -- "0..*" Brecho : compra em
     Financeiro "1" -- "*" Usuario : presta contas
