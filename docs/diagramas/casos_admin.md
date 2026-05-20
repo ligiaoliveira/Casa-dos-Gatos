@@ -9,6 +9,7 @@ flowchart LR
       UC4((Gerenciar doações))
       UC5((Publlicar transparência))
       UC6((Responder mensagens))
+      UC7((Gerenciar empresas parceiras))
   end
 
   Administrador --> UC1
@@ -17,5 +18,8 @@ flowchart LR
   Administrador --> UC4
   Administrador --> UC5
   Administrador --> UC6
+  Administrador --> UC7
+
+
 
 ```
