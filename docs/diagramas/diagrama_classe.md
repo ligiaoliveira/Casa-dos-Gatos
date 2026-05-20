@@ -20,6 +20,15 @@ classDiagram
         enviarFormulario()
     }
 
+    class Empresa Parceira {
+        NomeDaEmpresa
+        PessoaDeContato
+        E-mail
+        Telefone
+        ComoGostariaDeAjudar
+        enviarFormulario()
+    }
+
     class Gato {
         Nome
         Idade
@@ -45,7 +54,9 @@ classDiagram
         gerarRelatorio()
     }
 
-    Usuario "1" -- "0..1" Voluntario : se torna
+    Usuario "1" -- "0..1" Voluntario : se candidata
+    Usuario "1" -- "0..1" Empresa Parceira : se candidata
     Usuario "1" -- "0..*" Gato : consulta/adota
     Usuario "1" -- "0..*" Brecho : compra em
     Financeiro "1" -- "*" Usuario : presta contas
+´´´
