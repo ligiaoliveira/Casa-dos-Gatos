@@ -430,24 +430,24 @@ end
 ### Empresa Parceira 🏢
 ```mermaid
 sequenceDiagram
-participant E as Empresa
-participant F as Formulário 
-participant S Sistema
-participant BD as Banco de Dados
+    participant E as Empresa
+    participant F as Formulário
+    participant S as Sistema
+    participant BD as "Banco de Dados"
 
-E ->> F: Preenche dados da empresa
-E ->> F: Informa contato e mensagem
-E ->> F: Clica em "Enviar contato"
-F ->> S: Enviar informações
-S ->> S: Validar dados
+    E ->> F: Preenche dados da empresa
+    E ->> F: Informa contato e mensagem
+    E ->> F: Clica em "Enviar contato"
+    F ->> S: Enviar informações
+    S ->> S: Validar dados
 
-alt Dados válidos
-S->> BD: Salvar solicitação
-BD -->> S: Confirma salvamento
-S -->> E: Contato enviado com sucesso
-else Dados inválidos
-S -->> E: Exibir mensagem de erro
-end
+    alt Dados válidos
+        S ->> BD: Salvar solicitação
+        BD ->> S: Confirma salvamento
+        S ->> E: Contato enviado com sucesso
+    else Dados inválidos
+        S ->> E: Exibir mensagem de erro
+    end
 ```
 ---
 
