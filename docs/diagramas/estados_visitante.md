@@ -7,6 +7,7 @@ stateDiagram-v2
   VisitandoSite --> VisualizandoBrechó : Acessar brechó
   VisitandoSite --> VisualizandoDoação : Acessar doações
   VisitandoSite --> Voluntariado : Acessar voluntariado
+  VisitandoSite --> VisualizandoEmpresasParceiras : Acessar Empresas Parceiras
   VisitandoSite --> Contato : Acessar contato
 
   %% Gatos
@@ -33,8 +34,12 @@ stateDiagram-v2
   Aprovado --> [*]
   Rejeitado --> [*]
 
+  %% Empresas Parceiras
+  VisualizandoEmpresasParceiras --> [*]
+
   %% Contato
   Contato --> EnviandoMensagem
   EnviandoMensagem --> MensagemEnviada
   MensagemEnviada --> [*]
+
 ```
