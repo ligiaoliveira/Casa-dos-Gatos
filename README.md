@@ -433,7 +433,7 @@ sequenceDiagram
 participant E as Empresa
 participant F as Formulário 
 participant S Sistema
- participant BD as Banco de Dados
+participant BD as Banco de Dados
 
 E ->> F: Preenche dados da empresa
 E ->> F: Informa contato e mensagem
@@ -445,7 +445,6 @@ alt Dados válidos
 S->> BD: Salvar solicitação
 BD -->> S: Confirma salvamento
 S -->> E: Contato enviado com sucesso
-
 else Dados inválidos
 S -->> E: Exibir mensagem de erro
 end
