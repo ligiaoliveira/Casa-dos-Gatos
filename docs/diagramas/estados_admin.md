@@ -12,6 +12,7 @@ stateDiagram-v2
   PainelAdmin --> GerenciandoGatos
   PainelAdmin --> GerenciandoProdutos
   PainelAdmin --> GerenciandoVoluntários
+  PainelAdmin --> GerenciandoEmpresasParceiras
   PainelAdmin --> GerenciandoDoações
   PainelAdmin --> PublicandoTransparência
   PainelAdmin --> RespondendoMensagens
@@ -20,6 +21,7 @@ stateDiagram-v2
   GerenciandoGatos --> PainelAdmin
   GerenciandoProdutos --> PainelAdmin
   GerenciandoVoluntários --> PainelAdmin
+  GerenciandoEmpresasParceiras --> PainelAdmin
   GerenciandoDoações --> PainelAdmin
   PublicandoTransparência --> PainelAdmin
   RespondendoMensagens --> PainelAdmin
@@ -47,6 +49,13 @@ stateDiagram-v2
   Aprovado --> GerenciandoVoluntários
   Rejeitado --> GerenciandoVoluntários
 
+  %% Empresas Parceiras
+  GerenciandoEmpresasParceiras --> AnalisandoCadastro
+  AnalisandoCadastro --> Aprovado
+  AnalisandoCadastro --> Rejeitado
+  Aprovado --> GerenciandoEmpresasParceiras
+  Rejeitado --> GerenciandoEmpresasParceiras
+
   %% Doações
   GerenciandoDoações --> VisualizandoDoações
   VisualizandoDoações --> GerenciandoDoações
@@ -60,4 +69,5 @@ stateDiagram-v2
   MensagemRespondida --> PainelAdmin
 
   PainelAdmin --> [*] : logout
+
 ```
