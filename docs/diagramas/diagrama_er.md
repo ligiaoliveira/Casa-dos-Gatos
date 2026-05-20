@@ -1,11 +1,14 @@
 ```mermaid
 erDiagram
-    USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
-    USUARIO ||--o{ ADOCAO_INTERESSE : "tem_interesse"
-    USUARIO ||--o{ PEDIDO_BRECHO : "compra"
+    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
+    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
+    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
+    USUARIO ||--o{ FINANCEIRO : "acessa informações"
+    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
+    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
     
     CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
-    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "esta_no"
+    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
 
     USUARIO {
         info Nome
@@ -44,6 +47,21 @@ erDiagram
         info Valor
         info Data
     }
+
+    CONTEUDO_ONG {
+        info Historia
+        info Objetivos
+    }
+    
+    EMPRESA_PARCEIRA {
+        info Nome_da_Empresa
+        info Pessoa_de_Contato
+        info E-mail
+        info Telefone
+        info Como_Gostaria_de_Ajudar
+    }
+
+
 
     CONTEUDO_ONG {
         info Historia
