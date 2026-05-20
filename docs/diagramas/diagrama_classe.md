@@ -59,4 +59,4 @@ classDiagram
     Usuario "1" -- "0..*" Gato : consulta/adota
     Usuario "1" -- "0..*" Brecho : compra em
     Financeiro "1" -- "*" Usuario : presta contas
-´´´
+
