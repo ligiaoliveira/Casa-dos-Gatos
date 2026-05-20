@@ -433,7 +433,7 @@ sequenceDiagram
     participant E as Empresa
     participant F as Formulário
     participant S as Sistema
-    participant BD as "Banco de Dados"
+    participant BD as Banco de Dados
 
     E ->> F: Preenche dados da empresa
     E ->> F: Informa contato e mensagem
