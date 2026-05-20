@@ -412,6 +412,30 @@ S-->>U: Exibe carrinho novamente
 end
 ```
 ---
+### Empresa Parceira 🏢
+```mermaid
+sequenceDiagram
+participant E as Empresa
+participant F as Formulário 
+participant S Sistema
+ participant BD as Banco de Dados
+
+E ->> F: Preenche dados da empresa
+E ->> F: Informa contato e mensagem
+E ->> F: Clica em "Enviar contato"
+F ->> S: Enviar informações
+S ->> S: Validar dados
+
+alt Dados válidos
+S->> BD: Salvar solicitação
+BD -->> S: Confirma salvamento
+S -->> E: Contato enviado com sucesso
+
+else Dados inválidos
+S -->> E: Exibir mensagem de erro
+end
+```
+---
 
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
