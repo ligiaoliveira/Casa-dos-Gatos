@@ -100,7 +100,6 @@ flowchart LR
         UC5((Entrar em contato))
         UC6((Ver voluntários))
         UC7((Ver transparência))
-
         UC8((Filtrar gatos))
         UC9((Ver detalhes do gato))
         UC10((Ver detalhes do produto))
@@ -150,17 +149,18 @@ flowchart LR
         UC1((Ver voluntários))
         UC2((Mídias sociais e contato))
         UC3((Fazer doação))
-
         UC4((Enviar mensagem))
         UC5((Doação financeira))
         UC6((Doação de itens))
         UC7((Lista de itens aceitos))
         UC8((Dados bancários para doar))
+        UC9((Ver empresas parceiras))
     end
 
     Voluntário --> UC1
     Voluntário --> UC2
     Voluntário --> UC3
+    Voluntário --> UC9
 
     UC2 --> UC4
     UC3 --> UC5
@@ -184,6 +184,7 @@ flowchart LR
       UC4((Gerenciar doações))
       UC5((Publlicar transparência))
       UC6((Responder mensagens))
+      UC7((Gerenciar empresas parceiras))
   end
 
   Administrador --> UC1
@@ -192,6 +193,7 @@ flowchart LR
   Administrador --> UC4
   Administrador --> UC5
   Administrador --> UC6
+  Administrador --> UC7
 
 ```
 ---
