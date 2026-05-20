@@ -601,11 +601,17 @@ classDiagram
 
 <img width="701" height="562" alt="Screenshot_11" src="https://github.com/user-attachments/assets/1911021f-7582-4a07-b73a-977913d73589" />
 
+<img width="697" height="414" alt="Screenshot_12" src="https://github.com/user-attachments/assets/853066ea-4729-49c4-aa63-2e38ddc405ee" />
+
 <img width="516" height="443" alt="Screenshot_7" src="https://github.com/user-attachments/assets/85f6a07e-6c10-40da-ac66-83a8a268ef38" />
 
 <img width="395" height="420" alt="Screenshot_8" src="https://github.com/user-attachments/assets/c0847a6c-89f8-45dc-991d-5a37b786747c" />
 
 <img width="516" height="443" alt="Screenshot_9" src="https://github.com/user-attachments/assets/9c3b1a28-397d-4b5e-bc3e-cf8e9f0827be" />
+
+<img width="670" height="453" alt="Screenshot_4" src="https://github.com/user-attachments/assets/093a5df6-ec29-420f-8c1c-395b73618a35" />
+
+<img width="672" height="830" alt="Screenshot_5" src="https://github.com/user-attachments/assets/40b52a46-d9cd-45a9-9537-5a33dd33f54e" />
 
 ---
 
