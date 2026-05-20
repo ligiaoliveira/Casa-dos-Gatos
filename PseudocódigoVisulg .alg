@@ -2,8 +2,8 @@ algoritmo "P.I. ong gatos"
 
 var
    opcao: inteiro
-   cidade: caractere
-   aprovado: caractere
+   cidade, aprovado: caractere
+   nomeempresa, contato, email, telefone, ajuda: caractere
 
 inicio
 
@@ -18,6 +18,7 @@ inicio
       escreval("4 - Adoção")
       escreval("5 - Brechó")
       escreval("6 - Transparência")
+      escreval("7 - Empresa Parceira")
       escreval("0 - Sair")
 
       escreva("Escolha uma opção: ")
@@ -69,8 +70,25 @@ inicio
                         escreval("Relatórios de transparência")
 
                      senao
-                        se opcao <> 0 entao
-                           escreval("Opção inválida")
+                        se opcao = 7 entao
+                           escreval("=== Cadastro Empresa Parceira ===")
+                           escreva("Nome da empresa: ")
+                           leia(nomeempresa)
+                           escreva("Pessoa de contato: ")
+                           leia(contato)
+                           escreva("E-mail: ")
+                           leia(email)
+                           escreva("Telefone: ")
+                           leia(telefone)
+                           escreva("Como gostaria de ajudar? ")
+                           leia(ajuda)
+                           escreval("Cadastro enviado com sucesso!")
+                           escreval("Entraremos em contato em breve.")
+
+                        senao
+                           se opcao <> 0 entao
+                              escreval("Opção inválida")
+                           fimse
                         fimse
                      fimse
                   fimse
