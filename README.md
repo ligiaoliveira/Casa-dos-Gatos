@@ -374,9 +374,6 @@ S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
 
 ### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
 ```mermaid
-## Diagrama de Sequência — Compra no Brechó
-
-```mermaid
 sequenceDiagram
     participant U as Usuário 
     participant S as Site
