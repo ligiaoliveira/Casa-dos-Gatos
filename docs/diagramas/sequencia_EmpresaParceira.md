@@ -1,5 +1,4 @@
-´´´mermaid
-
+```mermaid
 sequenceDiagram
     participant E as Empresa
     participant F as Formulário
@@ -20,4 +19,4 @@ sequenceDiagram
     else Dados inválidos
         S ->> E: Exibir Mensagem de Erro
     end
-´´´
+```
