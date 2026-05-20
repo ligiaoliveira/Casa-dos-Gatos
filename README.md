@@ -111,6 +111,9 @@ flowchart LR
         UC15((Doação de itens))
         UC16((Lista de itens aceitos))
         UC17((Dados bancários para doar))
+        UC18((Se tornar empresa parceira))
+        UC19((Inserir informações))
+        UC20((Enviar contato))
     end
 
     Visitante --> UC1
@@ -120,6 +123,7 @@ flowchart LR
     Visitante --> UC5
     Visitante --> UC6
     Visitante --> UC7
+    Visitante --> UC18
 
     UC1 --> UC8
     UC1 --> UC9
@@ -131,6 +135,8 @@ flowchart LR
     UC5 --> UC14
     UC13 --> UC17
     UC15 --> UC16
+    UC18 --> UC19
+    UC19 --> UC20
 ```
 ---
 
