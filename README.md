@@ -80,6 +80,18 @@ Projeto desenvolvido por estudantes da FATEC Araraquara:
 
 ---
 
+## 📆 Cronograma de Entrega
+
+Conograma de Springs
+
+<img width="986" height="144" alt="Captura de tela 2026-06-12 212954" src="https://github.com/user-attachments/assets/3064b4e2-304e-40bd-a632-08253254d4d4" />
+
+Conograma de Milestones
+
+<img width="1047" height="146" alt="Captura de tela 2026-06-12 211848" src="https://github.com/user-attachments/assets/9235a4de-f5b1-44d7-ac7d-915025527bfe" />
+
+---
+
 ## 💡 Considerações Finais
 
 Esse projeto foi pensado não só como atividade acadêmica, mas também como uma forma de contribuir com uma causa importante. Esperamos que o sistema ajude a ONG a alcançar mais pessoas e, principalmente, encontrar lares para muitos gatinhos ❤️🐱
