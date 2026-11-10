@@ -69,8 +69,8 @@ Projeto desenvolvido por estudantes da FATEC Araraquara:
 * Carlos Eduardo Fagian Filho
 * João Pedro de Oliveira
 * Ligia Cristina de Oliveira
-* Manoela Zanin Zanardi
-* Walisson Rodrigues Dos Santos
+* Manoela Zanin Parcesepe Zanardi
+* Pedro Cecilio Cano
 
 ---
 
@@ -624,6 +624,15 @@ classDiagram
 <img width="670" height="453" alt="Screenshot_4" src="https://github.com/user-attachments/assets/093a5df6-ec29-420f-8c1c-395b73618a35" />
 
 <img width="672" height="830" alt="Screenshot_5" src="https://github.com/user-attachments/assets/40b52a46-d9cd-45a9-9537-5a33dd33f54e" />
+
+---
+
+## 📈 Modelos do Banco de Dados
+### Conceitual
+<img width="1388" height="805" alt="Modelo-Conceitual" src="https://github.com/user-attachments/assets/7581c985-6dc6-4785-ae49-82701d770940" />
+
+### Lógico
+<img width="1499" height="858" alt="Modelo-Lógico" src="https://github.com/user-attachments/assets/a7923e12-d133-4735-92b0-4663ee1595ef" />
 
 ---
 
