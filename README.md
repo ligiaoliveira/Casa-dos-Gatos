@@ -1,3 +1,4 @@
+<img width="1732" height="221" alt="Screenshot_2-1" src="https://github.com/user-attachments/assets/32fc4a33-a716-4a30-b2c1-c47fa87dcd4b" />
 # 🐱 Casa dos Gatos - Projeto Web
 
 ## 📌 Sobre o Projeto
@@ -628,17 +629,29 @@ classDiagram
 ---
 
 ## 📊 Tabela de Dados
-### Gatos
-<img width="1138" height="453" alt="Screenshot_8" src="https://github.com/user-attachments/assets/b6610c5c-956d-44d1-97c0-57ad5bd22e21" />
+### Usuários (Administradores, Voluntários e Comuns)
+<img width="1732" height="221" alt="Screenshot_2-1" src="https://github.com/user-attachments/assets/9123db50-8786-4018-8346-56f14829dc02" />
+
+### Catálogo de Gatos
+<img width="1252" height="184" alt="Screenshot_1" src="https://github.com/user-attachments/assets/cc161eed-9762-4658-902b-7bb7fe6dc050" />
+
+### Produtos do Brechó
+<img width="1117" height="166" alt="Screenshot_2" src="https://github.com/user-attachments/assets/40eaeb32-42c3-4076-90b1-02d453e86216" />
 
 ### Voluntários
-<img width="790" height="452" alt="Screenshot_9" src="https://github.com/user-attachments/assets/4fff794a-a16a-432b-8e67-abd3163e3434" />
+<img width="1367" height="94" alt="Screenshot_3" src="https://github.com/user-attachments/assets/ba7af8a2-d07b-472a-bf3a-36c29eedab15" />
 
-### Doações
-<img width="790" height="450" alt="Screenshot_11" src="https://github.com/user-attachments/assets/494e0817-0296-4851-99d8-b6d6140484d5" />
+### Empresas Parceiras
+<img width="1358" height="112" alt="Screenshot_4" src="https://github.com/user-attachments/assets/20b56878-9068-4d2d-b674-c8f40e3e5dfc" />
 
-### Transparência
-<img width="644" height="449" alt="Screenshot_12" src="https://github.com/user-attachments/assets/263dd9ed-0878-4b78-8cba-9fa27ce47426" />
+### Solicitações de Adoção e Visitas
+<img width="1243" height="130" alt="Screenshot_5" src="https://github.com/user-attachments/assets/eee4f1b0-28a2-4af0-abd1-4c15dced48cf" />
+
+### Pedidos do Brechó
+<img width="1448" height="149" alt="Screenshot_6" src="https://github.com/user-attachments/assets/7676b5bf-9c9d-4346-8463-8f13e393a50c" />
+
+### Transparência Financeira
+<img width="921" height="238" alt="Screenshot_7" src="https://github.com/user-attachments/assets/1d0dfabc-7782-4f4a-a14d-104e31947f40" />
 
 ---
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
