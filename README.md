@@ -1,4 +1,3 @@
-<img width="1732" height="221" alt="Screenshot_2-1" src="https://github.com/user-attachments/assets/32fc4a33-a716-4a30-b2c1-c47fa87dcd4b" />
 # 🐱 Casa dos Gatos - Projeto Web
 
 ## 📌 Sobre o Projeto
