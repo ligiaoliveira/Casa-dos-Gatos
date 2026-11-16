@@ -496,15 +496,7 @@ sequenceDiagram
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
-    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
-    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
-    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
-    USUARIO ||--o{ FINANCEIRO : "acessa informações"
-    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
-    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
-    
-    CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
-    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
+    direction LR
 
     USUARIO {
         info Nome
@@ -523,19 +515,12 @@ erDiagram
         info Disposto_a_Aprender
     }
 
-    CATALOGO_GATOS {
-        info Nome_Gato
-        info Idade
-        info Descricao
-        info Foto
-        info Status
-    }
-
-    PRODUTO_BRECHO {
-        info Nome_Item
-        info Preco
-        info Descricao
-        info Imagem
+    EMPRESA_PARCEIRA {
+        info Nome_da_Empresa
+        info Pessoa_de_Contato
+        info E-mail
+        info Telefone
+        info Como_Gostaria_de_Ajudar
     }
 
     FINANCEIRO {
@@ -548,15 +533,40 @@ erDiagram
         info Historia
         info Objetivos
     }
-    
-    EMPRESA_PARCEIRA {
-        info Nome_da_Empresa
-        info Pessoa_de_Contato
-        info E-mail
-        info Telefone
-        info Como_Gostaria_de_Ajudar
+
+    CATALOGO_GATOS {
+        info Nome_Gato
+        info Idade
+        info Descricao
+        info Foto
+        info Status
     }
 
+    ADOCAO_INTERESSE {
+    }
+
+    PRODUTO_BRECHO {
+        info Nome_Item
+        info Preco
+        info Descricao
+        info Imagem
+    }
+
+    PEDIDO_BRECHO {
+    }
+
+    %% Relacionamentos 1 para 0..N a partir de USUARIO
+    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
+    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
+    USUARIO ||--o{ FINANCEIRO : "acessa informações"
+    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
+
+    %% Relacionamentos N para N resolvidos pelas tabelas associativas
+    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
+    CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
+
+    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
+    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
 ```
 ---
 
