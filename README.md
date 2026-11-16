@@ -261,76 +261,124 @@ flowchart TD
 
 ### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#1e1b4b', 'lineColor': '#475569'}, 'flowchart': {'nodeSpacing': 65, 'rankSpacing': 75}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#1e1b4b', 'lineColor': '#475569'}, 'flowchart': {'nodeSpacing': 50, 'rankSpacing': 65}}}%%
 stateDiagram-v2
     direction TB
 
-    %% Estados com nomes formatados para leitura nítida
+    %% Estados Principais
     state "Visitando Site" as VisitandoSite
-    state "Visualizando Brechó" as VisualizandoBrecho
-    state "Detalhes do Produto" as DetalhesProduto
-    state "WhatsApp" as WhatsApp
+    state "Visualizando Transparência" as VisualizandoTransparencia
+    state "Visualizando Voluntários" as VisualizandoVoluntarios
 
+    %% 1. Estados de Adoção
     state "Visualizando Gatos" as VisualizandoGatos
     state "Filtrando Gatos" as FiltrandoGatos
     state "Detalhes do Gato" as DetalhesGato
+    state "Escolhendo Horário de Atendimento" as EscolhendoHorario
+    state "Visita Agendada" as VisitaAgendada
 
+    %% 2. Estados de Brechó
+    state "Visualizando Brechó" as VisualizandoBrecho
+    state "Detalhes do Produto" as DetalhesProduto
+    state "Carrinho de Compras" as CarrinhoCompras
+    state "Selecionando Pagamento (PIX)" as SelecionandoPagamento
+    state "Aguardando Pagamento" as AguardandoPagamento
+    state "Pagamento Confirmado" as PagamentoConfirmado
+    state "Contato via WhatsApp" as WhatsApp
+
+    %% 3. Estados de Doação
+    state "Visualizando Doação" as VisualizandoDoacao
+    state "Visualizando QR Code / Dados Bancários" as DadosDoacao
+    state "Inserindo Valor da Doação" as InserindoValor
+    state "Doação Realizada" as DoacaoRealizada
+    state "Visualizando Lista de Itens Aceitos" as ListaItens
+
+    %% 4. Estados de Voluntariado
+    state "Visualizando Voluntariado" as Voluntariado
+    state "Preenchendo Formulário Voluntário" as FormVoluntario
+    state "Candidatura Enviada" as CandidaturaVolEnviada
+    state "Aguardando Aprovação (Voluntário)" as AguardandoVol
+    state "Voluntário Aprovado" as VolAprovado
+    state "Voluntário Rejeitado" as VolRejeitado
+
+    %% 5. Estados de Empresa Parceira
+    state "Visualizando Empresas Parceiras" as VisualizandoEmpresas
+    state "Preenchendo Formulário Parceiro" as FormEmpresa
+    state "Validando Dados da Empresa" as ValidandoEmpresa
+    state "Solicitação Enviada" as SolicitacaoEmpresaEnviada
+    state "Erro de Validação" as ErroEmpresa
+
+    %% 6. Estados de Contato
     state "Contato" as Contato
     state "Enviando Mensagem" as EnviandoMensagem
     state "Mensagem Enviada" as MensagemEnviada
 
-    state "Visualizando Doação" as VisualizandoDoacao
-    state "Visualizando Dados Bancários" as VisualizandoDadosBancarios
-
-    state "Voluntariado" as Voluntariado
-    state "Preenchendo Formulário" as PreenchendoFormulario
-    state "Enviado" as Enviado
-    state "Aguardando Aprovação" as AguardandoAprovacao
-    state "Aprovado" as Aprovado
-    state "Rejeitado" as Rejeitado
-
-    state "Visualizando Empresas Parceiras" as VisualizandoEmpresasParceiras
-
     %% Início
     [*] --> VisitandoSite
 
-    %% Ramificações principais a partir de VisitandoSite
-    VisitandoSite --> VisualizandoBrecho : Acessar brechó
+    %% Navegação a partir da Página Inicial
     VisitandoSite --> VisualizandoGatos : Acessar adoção
-    VisitandoSite --> Contato : Acessar contato
+    VisitandoSite --> VisualizandoBrecho : Acessar brechó
     VisitandoSite --> VisualizandoDoacao : Acessar doações
     VisitandoSite --> Voluntariado : Acessar voluntariado
-    VisitandoSite --> VisualizandoEmpresasParceiras : Acessar Empresas Parceiras
+    VisitandoSite --> VisualizandoEmpresas : Acessar empresas parceiras
+    VisitandoSite --> Contato : Acessar contato
+    VisitandoSite --> VisualizandoTransparencia : Acessar transparência
+    VisitandoSite --> VisualizandoVoluntarios : Ver voluntários
 
-    %% 1. Fluxo Brechó
-    VisualizandoBrecho --> DetalhesProduto : Ver produto
-    DetalhesProduto --> WhatsApp : Ir para o contato
-    WhatsApp --> [*]
-
-    %% 2. Fluxo Adoção & Contato
+    %% Fluxo 1: Adoção (integrado com Sequência de Adoção)
     VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
     FiltrandoGatos --> VisualizandoGatos
     VisualizandoGatos --> DetalhesGato : Ver detalhes
-    DetalhesGato --> Contato : Interesse no gato
+    DetalhesGato --> EscolhendoHorario : Escolher gato para adotar
+    EscolhendoHorario --> VisitaAgendada : Confirmar horário ("Data Marcada!")
+    DetalhesGato --> Contato : Tirar dúvidas sobre o gato
+    VisitaAgendada --> [*]
+
+    %% Fluxo 2: Brechó (integrado com Sequência de Brechó e Caso de Uso)
+    VisualizandoBrecho --> DetalhesProduto : Ver produto
+    DetalhesProduto --> CarrinhoCompras : Adicionar ao carrinho
+    DetalhesProduto --> WhatsApp : Tirar dúvida via WhatsApp
+    CarrinhoCompras --> VisualizandoBrecho : Continuar comprando
+    CarrinhoCompras --> SelecionandoPagamento : Finalizar compra
+    SelecionandoPagamento --> CarrinhoCompras : Voltar ao carrinho
+    SelecionandoPagamento --> AguardandoPagamento : Gerar pagamento PIX
+    AguardandoPagamento --> PagamentoConfirmado : Clicar em "Já paguei" (Confirmado)
+    PagamentoConfirmado --> [*]
+    WhatsApp --> [*]
+
+    %% Fluxo 3: Doações (integrado com Sequência de Doar e Caso de Uso)
+    VisualizandoDoacao --> DadosDoacao : Doação financeira
+    DadosDoacao --> InserindoValor : Escanear QR Code
+    InserindoValor --> DoacaoRealizada : Confirmar transação
+    VisualizandoDoacao --> ListaItens : Doação de itens
+    DoacaoRealizada --> [*]
+    ListaItens --> [*]
+
+    %% Fluxo 4: Voluntariado
+    Voluntariado --> FormVoluntario : Se voluntariar
+    FormVoluntario --> CandidaturaVolEnviada : Enviar formulário
+    CandidaturaVolEnviada --> AguardandoVol
+    AguardandoVol --> VolAprovado
+    AguardandoVol --> VolRejeitado
+    VolAprovado --> [*]
+    VolRejeitado --> [*]
+
+    %% Fluxo 5: Empresa Parceira (integrado com Sequência de Empresa Parceira)
+    VisualizandoEmpresas --> FormEmpresa : Se tornar empresa parceira
+    FormEmpresa --> ValidandoEmpresa : Clicar em "Enviar contato"
+    ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Dados válidos
+    ValidandoEmpresa --> ErroEmpresa : Dados inválidos
+    ErroEmpresa --> FormEmpresa : Corrigir dados
+    SolicitacaoEmpresaEnviada --> [*]
+    VisualizandoEmpresas --> [*]
+
+    %% Fluxo 6: Contato e Consultas Públicas
     Contato --> EnviandoMensagem
     EnviandoMensagem --> MensagemEnviada
     MensagemEnviada --> [*]
-
-    %% 3. Fluxo Doações
-    VisualizandoDoacao --> VisualizandoDadosBancarios : Ver dados para doação
-    VisualizandoDadosBancarios --> [*]
-
-    %% 4. Fluxo Voluntariado
-    Voluntariado --> PreenchendoFormulario
-    PreenchendoFormulario --> Enviado
-    Enviado --> AguardandoAprovacao
-    AguardandoAprovacao --> Aprovado
-    AguardandoAprovacao --> Rejeitado
-    Aprovado --> [*]
-    Rejeitado --> [*]
-
-    %% 5. Fluxo Empresas Parceiras
-    VisualizandoEmpresasParceiras --> [*]
+    VisualizandoTransparencia --> [*]
+    VisualizandoVoluntarios --> [*]
 ```
 
 ---
