@@ -1,6 +1,14 @@
-
-``` mermaid
+```mermaid 
 classDiagram
+    direction LR
+
+    class Financeiro {
+        TipoMovimentacao
+        Valor
+        Data
+        gerarRelatorio()
+    }
+
     class Usuario {
         Nome
         CPF
@@ -20,7 +28,7 @@ classDiagram
         enviarFormulario()
     }
 
-    class Empresa Parceira {
+    class EmpresaParceira {
         NomeDaEmpresa
         PessoaDeContato
         E-mail
@@ -47,16 +55,9 @@ classDiagram
         comprar()
     }
 
-    class Financeiro {
-        TipoMovimentacao
-        Valor
-        Data
-        gerarRelatorio()
-    }
-
+    Financeiro "1" -- "*" Usuario : presta contas
     Usuario "1" -- "0..1" Voluntario : se candidata
-    Usuario "1" -- "0..1" Empresa Parceira : se candidata
+    Usuario "1" -- "0..1" EmpresaParceira : se candidata
     Usuario "1" -- "0..*" Gato : consulta/adota
     Usuario "1" -- "0..*" Brecho : compra em
-    Financeiro "1" -- "*" Usuario : presta contas
-
+```
