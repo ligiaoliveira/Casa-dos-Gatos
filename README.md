@@ -97,6 +97,7 @@ Conograma de Milestones
 Esse projeto foi pensado não só como atividade acadêmica, mas também como uma forma de contribuir com uma causa importante. Esperamos que o sistema ajude a ONG a alcançar mais pessoas e, principalmente, encontrar lares para muitos gatinhos ❤️🐱
 
 ---
+
 ## Diagramas de Caso de Uso
 
 ### 👤 Visitante [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_visitante.md)
@@ -169,6 +170,7 @@ flowchart TD
     %% Estilo da caixa Área Pública
     style AreaPublica fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
 ```
+
 ---
 
 ### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_voluntario.md)
@@ -215,33 +217,44 @@ flowchart TD
     %% Estilo da caixa Área do Voluntário
     style AreaVoluntario fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
 ```
+
 ---
 
 ### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/casos_admin.md)
 
 ```mermaid
-flowchart LR
-  Administrador((Administrador))
+flowchart TD
+    %% Estilo para melhorar nitidez e visual UML
+    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
+    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
 
-  subgraph Área do Administrador
-      UC1((Gerenciar gatos))
-      UC2((Gerenciar produtos do brechó))
-      UC3((Gerenciar voluntários))
-      UC4((Gerenciar doações))
-      UC5((Publlicar transparência))
-      UC6((Responder mensagens))
-      UC7((Gerenciar empresas parceiras))
-  end
+    Administrador([🔐 Administrador]):::ator
 
-  Administrador --> UC1
-  Administrador --> UC2
-  Administrador --> UC3
-  Administrador --> UC4
-  Administrador --> UC5
-  Administrador --> UC6
-  Administrador --> UC7
+    subgraph AreaAdministrador ["Área do Administrador"]
+        direction TB
 
+        UC1([Gerenciar gatos]):::caso
+        UC2([Gerenciar produtos do brechó]):::caso
+        UC3([Gerenciar voluntários]):::caso
+        UC4([Gerenciar doações]):::caso
+        UC5([Publicar transparência]):::caso
+        UC6([Responder mensagens]):::caso
+        UC7([Gerenciar empresas parceiras]):::caso
+    end
+
+    %% Conexões do Administrador espalhadas horizontalmente
+    Administrador --> UC1
+    Administrador --> UC2
+    Administrador --> UC3
+    Administrador --> UC4
+    Administrador --> UC5
+    Administrador --> UC6
+    Administrador --> UC7
+
+    %% Estilo da caixa Área do Administrador
+    style AreaAdministrador fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
 ```
+
 ---
 
 ## Diagrama de Estados
@@ -394,7 +407,9 @@ stateDiagram-v2
     PublicandoTransparencia : PublicandoTransparência
     PublicacaoRealizada : PublicaçãoRealizada
 ```
+
 ---
+
 ```mermaid
 stateDiagram-v2
 
@@ -439,6 +454,7 @@ stateDiagram-v2
   EnviandoMensagem --> MensagemEnviada
   MensagemEnviada --> [*]
 ```
+
 ---
 
 ### 🙋 Voluntário [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_voluntario.md)
@@ -461,7 +477,8 @@ stateDiagram-v2
   %% Visualização
   VisualizandoVoluntários --> [*]
   VisualizandoEmpresasPaceiras --> [*]
-  ```
+```
+  
 ---
 
 ### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_admin.md)
@@ -538,6 +555,7 @@ stateDiagram-v2
 
   PainelAdmin --> [*] : logout
 ```
+
 ---
 
 ## Diagramas de Sequência [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
@@ -623,6 +641,7 @@ sequenceDiagram
     end
 ```
 ---
+
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
@@ -689,6 +708,7 @@ erDiagram
 
 ```
 ---
+
 ## 📁Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
 ```mermaid 
 classDiagram
@@ -751,6 +771,7 @@ classDiagram
     Usuario "1" -- "0..*" Brecho : compra em
     Financeiro "1" -- "*" Usuario : presta contas
 ```
+
 ---
 
 ## 📝 Projeto Interface
@@ -820,5 +841,6 @@ classDiagram
 <img width="921" height="238" alt="Screenshot_7" src="https://github.com/user-attachments/assets/1d0dfabc-7782-4f4a-a14d-104e31947f40" />
 
 ---
+
 > Projeto acadêmico desenvolvido na FATEC Araraquara.
 > 
