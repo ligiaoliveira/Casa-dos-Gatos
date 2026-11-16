@@ -213,7 +213,154 @@ flowchart LR
 ## Diagrama de Estados
 
 ### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
+```mermaid
+stateDiagram-v2
+    [*] --> Visitante
+    [*] --> Voluntario
+    [*] --> Administrador
 
+    state "Visitante" as Visitante {
+        [*] --> VisitandoSite
+        VisitandoSite --> VisualizandoBrecho : Acessar brechó
+        VisitandoSite --> VisualizandoGatos : Acessar adoção
+        VisitandoSite --> Contato : Acessar contato
+        VisitandoSite --> VisualizandoDoacao : Acessar doações
+        VisitandoSite --> Voluntariado : Acessar voluntariado
+        VisitandoSite --> VisualizandoEmpresasParceiras_Vis : Acessar Empresas Parceiras
+
+        %% Fluxo Brechó
+        VisualizandoBrecho --> DetalhesProduto : Ver produto
+        DetalhesProduto --> WhatsApp : Ir para o contato
+        WhatsApp --> [*]
+
+        %% Fluxo Adoção e Contato
+        VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
+        FiltrandoGatos --> VisualizandoGatos
+        VisualizandoGatos --> DetalhesGato : Ver detalhes
+        DetalhesGato --> Contato : Interesse no gato
+        Contato --> EnviandoMensagem_Vis
+        EnviandoMensagem_Vis --> MensagemEnviada_Vis
+        MensagemEnviada_Vis --> [*]
+
+        %% Fluxo Doações
+        VisualizandoDoacao --> VisualizandoDadosBancarios : Ver dados para doação
+        VisualizandoDadosBancarios --> [*]
+
+        %% Fluxo Voluntariado
+        Voluntariado --> PreenchendoFormulario
+        PreenchendoFormulario --> Enviado
+        Enviado --> AguardandoAprovacao
+        AguardandoAprovacao --> Aprovado_Vis
+        AguardandoAprovacao --> Rejeitado_Vis
+        Aprovado_Vis --> [*]
+        Rejeitado_Vis --> [*]
+
+        %% Fluxo Empresas Parceiras
+        VisualizandoEmpresasParceiras_Vis --> [*]
+    }
+
+    state "Voluntário" as Voluntario {
+        [*] --> AcessandoSite
+        AcessandoSite --> VisualizandoInformacoes
+        VisualizandoInformacoes --> VisualizandoVoluntarios
+        VisualizandoInformacoes --> EntrandoEmContato
+        VisualizandoInformacoes --> VisualizandoEmpresasParceiras_Vol
+
+        VisualizandoVoluntarios --> [*]
+        EntrandoEmContato --> EnviandoMensagem_Vol
+        EnviandoMensagem_Vol --> MensagemEnviada_Vol
+        MensagemEnviada_Vol --> [*]
+        VisualizandoEmpresasParceiras_Vol --> [*]
+    }
+
+    state "Administrador" as Administrador {
+        [*] --> Login
+        Login --> PainelAdmin : Login válido
+        Login --> [*] : login inválido
+        PainelAdmin --> [*] : logout
+
+        %% Gerenciando Gatos
+        PainelAdmin --> GerenciandoGatos
+        GerenciandoGatos --> CadastrandoGato
+        CadastrandoGato --> GerenciandoGatos
+        GerenciandoGatos --> EditandoGato
+        EditandoGato --> GerenciandoGatos
+        GerenciandoGatos --> RemovendoGato
+        RemovendoGato --> GerenciandoGatos
+        GerenciandoGatos --> PainelAdmin
+
+        %% Gerenciando Produtos
+        PainelAdmin --> GerenciandoProdutos
+        GerenciandoProdutos --> CadastrandoProduto
+        CadastrandoProduto --> GerenciandoProdutos
+        GerenciandoProdutos --> EditandoProduto
+        EditandoProduto --> GerenciandoProdutos
+        GerenciandoProdutos --> RemovendoProduto
+        RemovendoProduto --> GerenciandoProdutos
+        GerenciandoProdutos --> PainelAdmin
+
+        %% Gerenciando Voluntários e Empresas Parceiras
+        PainelAdmin --> GerenciandoVoluntarios
+        GerenciandoVoluntarios --> AnalisandoCadastro_Vol
+        AnalisandoCadastro_Vol --> Aprovado_Adm
+        AnalisandoCadastro_Vol --> Rejeitado_Adm
+        Aprovado_Adm --> GerenciandoVoluntarios
+        Rejeitado_Adm --> GerenciandoVoluntarios
+        GerenciandoVoluntarios --> PainelAdmin
+
+        PainelAdmin --> GerenciandoEmpresasParceiras
+        GerenciandoEmpresasParceiras --> AnalisandoCadastro_Emp
+        AnalisandoCadastro_Emp --> Aprovado_Adm
+        AnalisandoCadastro_Emp --> Rejeitado_Adm
+        Aprovado_Adm --> GerenciandoEmpresasParceiras
+        Rejeitado_Adm --> GerenciandoEmpresasParceiras
+        GerenciandoEmpresasParceiras --> PainelAdmin
+
+        %% Gerenciando Doações
+        PainelAdmin --> GerenciandoDoacoes
+        GerenciandoDoacoes --> VisualizandoDoacoes
+        VisualizandoDoacoes --> GerenciandoDoacoes
+        GerenciandoDoacoes --> PainelAdmin
+
+        %% Publicando Transparência
+        PainelAdmin --> PublicandoTransparencia
+        PublicandoTransparencia --> PublicacaoRealizada
+        PublicacaoRealizada --> PainelAdmin
+
+        %% Respondendo Mensagens
+        PainelAdmin --> RespondendoMensagens
+        RespondendoMensagens --> MensagemRespondida
+        MensagemRespondida --> PainelAdmin
+    }
+
+    %% Nomes de exibição originais
+    VisitandoBrecho : VisualizandoBrechó
+    VisualizandoDoacao : VisualizandoDoação
+    VisualizandoEmpresasParceiras_Vis : VisualizandoEmpresasParceiras
+    EnviandoMensagem_Vis : EnviandoMensagem
+    MensagemEnviada_Vis : MensagemEnviada
+    VisualizandoDadosBancarios : VisualizandoDadosBancários
+    PreenchendoFormulario : PreenchendoFormulário
+    Aprovado_Vis : Aprovado
+    Rejeitado_Vis : Rejeitado
+
+    VisualizandoInformacoes : VisualizandoInformações
+    VisualizandoVoluntarios : VisualizandoVoluntários
+    EnviandoMensagem_Vol : EnviandoMensagem
+    MensagemEnviada_Vol : MensagemEnviada
+    VisualizandoEmpresasParceiras_Vol : VisualizandoEmpresasPaceiras
+
+    GerenciandoVoluntarios : GerenciandoVoluntários
+    AnalisandoCadastro_Vol : AnalisandoCadastro
+    AnalisandoCadastro_Emp : AnalisandoCadastro
+    Aprovado_Adm : Aprovado
+    Rejeitado_Adm : Rejeitado
+    GerenciandoDoacoes : GerenciandoDoações
+    VisualizandoDoacoes : VisualizandoDoações
+    PublicandoTransparencia : PublicandoTransparência
+    PublicacaoRealizada : PublicaçãoRealizada
+```
+---
 ```mermaid
 stateDiagram-v2
 
