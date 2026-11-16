@@ -410,127 +410,174 @@ stateDiagram-v2
 ---
 
 ## Diagramas de Sequência [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
+
+### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
 sequenceDiagram
-    participant Usuario as Usuário
-    participant Empresa
-    participant Formulario as Formulário
-    participant Site
-    participant Sistema
-    participant BancoDeDados as Banco de Dados
-    participant PIX
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Escolhe o Menu "Adoção"
+S->>B:Procura Gatos Disponiveis
+B-->>S:Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
+S-->>U:Repassa ID Para a Pagina Do Usuario
+U->>S:Escolhe o Gato
+S->>B:Procura Horario de Atendimento Disponivel
+B-->>S: Envia Horarios De Atendimento
+S-->>U: Mostra Horarios Disponiveis Para Atendimento
+U->>S: Escolhe Horario
+S-->>U: Envia Mensagem "Data Marcada! Até Logo"
+```
+---
 
-    alt Fluxo 1: Adotar
-        Usuario ->> Site: Escolhe o Menu "Adoção"
-        Site ->> BancoDeDados: Procura Gatos Disponíveis
-        BancoDeDados -->> Site: Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
-        Site -->> Usuario: Repassa ID Para a Pagina Do Usuario
-        Usuario ->> Site: Escolhe o Gato
-        Site ->> BancoDeDados: Procura Horario de Atendimento Disponivel
-        BancoDeDados -->> Site: Envia Horários De Atendimento
-        Site -->> Usuario: Mostra Horarios Disponiveis Para Atendimento
-        Usuario ->> Site: Escolhe Horario
-        Site -->> Usuario: Envia Mensagem "Data Marcada! Até Logo"
+### 💸 Doar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_doacao.md)
+```mermaid
+sequenceDiagram
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Escolhe Menu "Doação"
+S-->>U:Exibe Aba "Faça uma Doação"
+S->>B:Pede ID da Conta Bancaria Da ONG
+B-->>S: Envia ID Em Forma De QRcode Para Envio Do Valor que Desejar
+S-->>U:Exibe QRcode Na Tela Com Mensagem "Escaneie o QRcode Para Enviar a Doação"
+U->>S:Escaneia QRcode
+U->>S:Insere o Valor Desejado
+S->>B: Envia a Transação
+B-->>B:Guarda o Valor No Banco
+S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
+```
+---
 
-    else Fluxo 2: Doar
-        Usuario ->> Site: Escolhe Menu "Doação"
-        Site -->> Usuario: Exibe Aba "Faça uma Doação"
-        Site ->> BancoDeDados: Pede ID da Conta Bancaria Da ONG
-        BancoDeDados -->> Site: Envia ID Em Forma De QRcode Para Envio Do Valor que Desejar
-        Site -->> Usuario: Exibe QRcode Na Tela Com Mensagem "Escanele o QRcode Para Enviar a Doação"
-        Usuario ->> Site: Escaneia QRcode
-        Usuario ->> Site: Insere o Valor Desejado
-        Site ->> BancoDeDados: Envia a Transação
-        BancoDeDados -->> BancoDeDados: Guarda o Valor No Banco
-        Site -->> Usuario: Envia Mensagem "Doação Realizada Com Sucesso!"
+### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
+```mermaid
+sequenceDiagram
+    participant U as Usuário 
+    participant S as Site
+    participant B as Banco de Dados
+    participant P as PIX
 
-    else Fluxo 3: Brechó
-        Usuario ->> Site: Seleciona Menu "Brechó"
-        Site -->> Usuario: Exibe Produtos
-        Usuario ->> Site: Adiciona Produto ao Carrinho
-        Site ->> BancoDeDados: Atualiza Carrinho
-        BancoDeDados -->> Site: Carrinho Atualizado
+U->>S: Seleciona Menu "Brechó"
+S-->>U: Exibe Produtos
+U->>S: Adiciona Produto ao Carrinho
+S->>B: Atualiza Carrinho
+B-->>S: Carrinho Atualizado
 
-        alt Usuário continua comprando
-            Usuario ->> Site: Fecha Sacola e Continua Comprando
-            Site -->> Usuario: Exibe Catálogo Novamente
-        else Usuário finaliza compra
-            Usuario ->> Site: Finaliza Compra
-            Site ->> BancoDeDados: Solicita Resumo do Pedido
-            BancoDeDados -->> Site: Retorna Resumo do Pedido e Valor Total
-            Usuario ->> Site: Escolhe Método de Pagamento
-            BancoDeDados ->> PIX: Gera Pagamento de Acordo com o Método Escolhido
-            PIX -->> BancoDeDados: Retorna Forma de Pagamento
-            BancoDeDados -->> Site: Envia Forma de Pagamento
-            Site -->> Usuario: Mostra Forma de Pagamento e Valor
-            Usuario ->> PIX: Realiza Pagamento
-            Usuario ->> Site: Clica em "Já paguei"
-            Site ->> BancoDeDados: Verifica Pagamento
-            BancoDeDados ->> PIX: Consulta Status do Pagamento
-            PIX -->> BancoDeDados: Pagamento Confirmado
-            BancoDeDados -->> Site: Libera Confirmação
-            Site -->> Usuario: Exibe página de Pagamento Confirmado
-        else Usuário volta ao carrinho
-            Usuario ->> Site: Clica em "Voltar ao carrinho"
-            Site -->> Usuario: Exibe Carrinho Novamente
-        end
+alt Usuário continua comprando
+U->>S: Fecha Sacola e Continua Comprando
+S-->>U: Exibe Catálogo Novamente
 
-    else Fluxo 4: Empresa Parceira
-        Empresa ->> Formulario: Preenche Dados da Empresa
-        Empresa ->> Formulario: Informa Contato e Mensagem
-        Empresa ->> Formulario: Clica em "Enviar contato"
-        Formulario ->> Sistema: Envia Informações
-        Sistema ->> Sistema: Validar dados
+else Usuário finaliza compra
+U->>S: Finaliza Compra
+S->>B: Solicita Resumo do Pedido
+B-->>S: Retorna Resumo do Pedido e Valor Total
+U->>S:Escolhe Método de Pagamento
+B->>P: Gera Pagamento de Acordo com o Método Escolhido
+P-->>B: Retorna Forma de Pagamento
+B-->>S: Envia Forma de Pagamento
+S-->>U: Mostra Forma de Pagamento e Valor
+U->>P: Realiza Pagamento
+U->>S: Clica em "Já paguei"
+S->>B: Verifica Pagamento
+B->>P: Consulta Status do Pagamento
+P-->>B: Pagamento Confirmado
+B-->>S: Libera Confirmação
+S-->>U: Exibe página de Pagamento Confirmado
 
-        alt Dados válidos
-            Sistema ->> BancoDeDados: Salvar Solicitação
-            BancoDeDados ->> Sistema: Confirma Salvamento
-            Sistema ->> Empresa: Contato Enviado com Sucesso
-        else Dados inválidos
-            Sistema ->> Empresa: Exibir Mensagem de Erro
-        end
+else Usuário volta ao carrinho
+U->>S: Clica em "Voltar ao carrinho"
+S-->>U: Exibe Carrinho Novamente
+end
+```
+---
+### Empresa Parceira 🏢
+```mermaid
+sequenceDiagram
+    participant E as Empresa
+    participant F as Formulário
+    participant S as Sistema
+    participant B as Banco de Dados
+
+    E->>F: Preenche Dados da Empresa
+    E->>F: Informa Contato e Mensagem
+    E->>F: Clica em "Enviar contato"
+    F->>S: Envia informações
+    S->>S: Validar dados
+
+    alt Dados válidos
+        S->>B: Salvar Solicitação
+        B->>S: Confirma Salvamento
+        S->>E: Contato Enviado com Sucesso
+        
+    else Dados inválidos
+        S ->> E: Exibir Mensagem de Erro
     end
 ```
 ---
 
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
-flowchart LR
-    classDef entidade fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827,text-align:left;
-    classDef associativa fill:#eef2ff,stroke:#4f46e5,stroke-width:1.5px,color:#1e1b4b,font-weight:bold;
+erDiagram
+    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
+    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
+    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
+    USUARIO ||--o{ FINANCEIRO : "acessa informações"
+    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
+    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
+    
+    CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
+    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
 
-    %% Entidade Principal à Esquerda
-    USUARIO["<b>USUARIO</b><hr/>info | Nome<br/>info | CPF<br/>info | Email<br/>info | Telefone<br/>info | Endereco<br/>info | Nascimento"]:::entidade
+    USUARIO {
+        info Nome
+        info CPF
+        info Email
+        info Telefone
+        info Endereco
+        info Nascimento
+    }
 
-    %% Entidades Derivadas no Centro (espalhadas horizontalmente)
-    VOLUNTARIO["<b>VOLUNTARIO</b><hr/>info | Contato_Emergencia<br/>info | Dias_Disponiveis<br/>info | Habilidades<br/>info | Experiencia<br/>info | Disposto_a_Aprender"]:::entidade
+    VOLUNTARIO {
+        info Contato_Emergencia
+        info Dias_Disponiveis
+        info Habilidades
+        info Experiencia
+        info Disposto_a_Aprender
+    }
 
-    EMPRESA_PARCEIRA["<b>EMPRESA_PARCEIRA</b><hr/>info | Nome_da_Empresa<br/>info | Pessoa_de_Contato<br/>info | E-mail<br/>info | Telefone<br/>info | Como_Gostaria_de_Ajudar"]:::entidade
+    CATALOGO_GATOS {
+        info Nome_Gato
+        info Idade
+        info Descricao
+        info Foto
+        info Status
+    }
 
-    FINANCEIRO["<b>FINANCEIRO</b><hr/>info | Tipo_Movimentacao<br/>info | Valor<br/>info | Data"]:::entidade
+    PRODUTO_BRECHO {
+        info Nome_Item
+        info Preco
+        info Descricao
+        info Imagem
+    }
 
-    CONTEUDO_ONG["<b>CONTEUDO_ONG</b><hr/>info | Historia<br/>info | Objetivos"]:::entidade
+    FINANCEIRO {
+        info Tipo_Movimentacao
+        info Valor
+        info Data
+    }
 
-    ADOCAO_INTERESSE["<b>ADOCAO_INTERESSE</b>"]:::associativa
-    PEDIDO_BRECHO["<b>PEDIDO_BRECHO</b>"]:::associativa
-
-    %% Catálogos à Direita
-    CATALOGO_GATOS["<b>CATALOGO_GATOS</b><hr/>info | Nome_Gato<br/>info | Idade<br/>info | Descricao<br/>info | Foto<br/>info | Status"]:::entidade
-
-    PRODUTO_BRECHO["<b>PRODUTO_BRECHO</b><hr/>info | Nome_Item<br/>info | Preco<br/>info | Descricao<br/>info | Imagem"]:::entidade
-
-    %% Relacionamentos Horizontais (1 para 0..N)
-    USUARIO -->|"1 : se cadastra : 0..*"| VOLUNTARIO
-    USUARIO -->|"1 : se cadastra : 0..*"| EMPRESA_PARCEIRA
-    USUARIO -->|"1 : acessa informações : 0..*"| FINANCEIRO
-    USUARIO -->|"1 : acessa informações : 0..*"| CONTEUDO_ONG
-
-    %% Relacionamentos Horizontais N:N via Associativas
-    USUARIO -->|"1 : tem interesse : 0..*"| ADOCAO_INTERESSE
-    ADOCAO_INTERESSE <-->|"0..* : recebe : 1"| CATALOGO_GATOS
-
-    USUARIO -->|"1 : tem interesse : 0..*"| PEDIDO_BRECHO
-    PEDIDO_BRECHO <-->|"0..* : recebe : 1"| PRODUTO_BRECHO
+    CONTEUDO_ONG {
+        info Historia
+        info Objetivos
+    }
+    
+    EMPRESA_PARCEIRA {
+        info Nome_da_Empresa
+        info Pessoa_de_Contato
+        info E-mail
+        info Telefone
+        info Como_Gostaria_de_Ajudar
+    }
 ```
 ---
 
