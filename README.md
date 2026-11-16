@@ -261,7 +261,7 @@ flowchart TD
 
 ### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'arial', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#0f172a', 'lineColor': '#334155', 'edgeLabelBackground': '#f8fafc'}, 'flowchart': {'nodeSpacing': 35, 'rankSpacing': 60, 'curve': 'basis'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '18px', 'fontFamily': 'arial', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#0f172a', 'lineColor': '#334155', 'edgeLabelBackground': '#f8fafc'}, 'state': {'nodeSpacing': 110, 'rankSpacing': 75, 'padding': 16}, 'flowchart': {'nodeSpacing': 110, 'rankSpacing': 75}}}%%
 stateDiagram-v2
     direction LR
 
@@ -317,7 +317,7 @@ stateDiagram-v2
     %% Início
     [*] --> VisitandoSite
 
-    %% Navegação a partir da Página Inicial (empilhada verticalmente)
+    %% Navegação a partir da Página Inicial
     VisitandoSite --> VisualizandoGatos : Adoção
     VisitandoSite --> VisualizandoBrecho : Brechó
     VisitandoSite --> VisualizandoDoacao : Doações
