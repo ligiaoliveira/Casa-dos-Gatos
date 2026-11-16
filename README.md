@@ -359,9 +359,7 @@ stateDiagram-v2
 ```
 ---
 
-## Diagramas de Sequência
-
-### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
+## Diagramas de Sequência [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
 sequenceDiagram
     participant Usuario as Usuário
@@ -444,110 +442,6 @@ sequenceDiagram
     end
 ```
 ---
-
-```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Escolhe o Menu "Adoção"
-S->>B:Procura Gatos Disponiveis
-B-->>S:Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
-S-->>U:Repassa ID Para a Pagina Do Usuario
-U->>S:Escolhe o Gato
-S->>B:Procura Horario de Atendimento Disponivel
-B-->>S: Envia Horarios De Atendimento
-S-->>U: Mostra Horarios Disponiveis Para Atendimento
-U->>S: Escolhe Horario
-S-->>U: Envia Mensagem "Data Marcada! Até Logo"
-```
----
-
-### 💸 Doar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_doacao.md)
-```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Escolhe Menu "Doação"
-S-->>U:Exibe Aba "Faça uma Doação"
-S->>B:Pede ID da Conta Bancaria Da ONG
-B-->>S: Envia ID Em Forma De QRcode Para Envio Do Valor que Desejar
-S-->>U:Exibe QRcode Na Tela Com Mensagem "Escaneie o QRcode Para Enviar a Doação"
-U->>S:Escaneia QRcode
-U->>S:Insere o Valor Desejado
-S->>B: Envia a Transação
-B-->>B:Guarda o Valor No Banco
-S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
-```
----
-
-### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
-```mermaid
-sequenceDiagram
-    participant U as Usuário 
-    participant S as Site
-    participant B as Banco de Dados
-    participant P as PIX
-
-U->>S: Seleciona Menu "Brechó"
-S-->>U: Exibe Produtos
-U->>S: Adiciona Produto ao Carrinho
-S->>B: Atualiza Carrinho
-B-->>S: Carrinho Atualizado
-
-alt Usuário continua comprando
-U->>S: Fecha Sacola e Continua Comprando
-S-->>U: Exibe Catálogo Novamente
-
-else Usuário finaliza compra
-U->>S: Finaliza Compra
-S->>B: Solicita Resumo do Pedido
-B-->>S: Retorna Resumo do Pedido e Valor Total
-U->>S:Escolhe Método de Pagamento
-B->>P: Gera Pagamento de Acordo com o Método Escolhido
-P-->>B: Retorna Forma de Pagamento
-B-->>S: Envia Forma de Pagamento
-S-->>U: Mostra Forma de Pagamento e Valor
-U->>P: Realiza Pagamento
-U->>S: Clica em "Já paguei"
-S->>B: Verifica Pagamento
-B->>P: Consulta Status do Pagamento
-P-->>B: Pagamento Confirmado
-B-->>S: Libera Confirmação
-S-->>U: Exibe página de Pagamento Confirmado
-
-else Usuário volta ao carrinho
-U->>S: Clica em "Voltar ao carrinho"
-S-->>U: Exibe Carrinho Novamente
-end
-```
----
-### Empresa Parceira 🏢
-```mermaid
-sequenceDiagram
-    participant E as Empresa
-    participant F as Formulário
-    participant S as Sistema
-    participant B as Banco de Dados
-
-    E->>F: Preenche Dados da Empresa
-    E->>F: Informa Contato e Mensagem
-    E->>F: Clica em "Enviar contato"
-    F->>S: Envia informações
-    S->>S: Validar dados
-
-    alt Dados válidos
-        S->>B: Salvar Solicitação
-        B->>S: Confirma Salvamento
-        S->>E: Contato Enviado com Sucesso
-        
-    else Dados inválidos
-        S ->> E: Exibir Mensagem de Erro
-    end
-```
----
-
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
 erDiagram
