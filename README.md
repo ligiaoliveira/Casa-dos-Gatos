@@ -495,78 +495,42 @@ sequenceDiagram
 
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
 ```mermaid
-erDiagram
-    direction LR
+flowchart LR
+    classDef entidade fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827,text-align:left;
+    classDef associativa fill:#eef2ff,stroke:#4f46e5,stroke-width:1.5px,color:#1e1b4b,font-weight:bold;
 
-    USUARIO {
-        info Nome
-        info CPF
-        info Email
-        info Telefone
-        info Endereco
-        info Nascimento
-    }
+    %% Entidade Principal à Esquerda
+    USUARIO["<b>USUARIO</b><hr/>info | Nome<br/>info | CPF<br/>info | Email<br/>info | Telefone<br/>info | Endereco<br/>info | Nascimento"]:::entidade
 
-    VOLUNTARIO {
-        info Contato_Emergencia
-        info Dias_Disponiveis
-        info Habilidades
-        info Experiencia
-        info Disposto_a_Aprender
-    }
+    %% Entidades Derivadas no Centro (espalhadas horizontalmente)
+    VOLUNTARIO["<b>VOLUNTARIO</b><hr/>info | Contato_Emergencia<br/>info | Dias_Disponiveis<br/>info | Habilidades<br/>info | Experiencia<br/>info | Disposto_a_Aprender"]:::entidade
 
-    EMPRESA_PARCEIRA {
-        info Nome_da_Empresa
-        info Pessoa_de_Contato
-        info E-mail
-        info Telefone
-        info Como_Gostaria_de_Ajudar
-    }
+    EMPRESA_PARCEIRA["<b>EMPRESA_PARCEIRA</b><hr/>info | Nome_da_Empresa<br/>info | Pessoa_de_Contato<br/>info | E-mail<br/>info | Telefone<br/>info | Como_Gostaria_de_Ajudar"]:::entidade
 
-    FINANCEIRO {
-        info Tipo_Movimentacao
-        info Valor
-        info Data
-    }
+    FINANCEIRO["<b>FINANCEIRO</b><hr/>info | Tipo_Movimentacao<br/>info | Valor<br/>info | Data"]:::entidade
 
-    CONTEUDO_ONG {
-        info Historia
-        info Objetivos
-    }
+    CONTEUDO_ONG["<b>CONTEUDO_ONG</b><hr/>info | Historia<br/>info | Objetivos"]:::entidade
 
-    CATALOGO_GATOS {
-        info Nome_Gato
-        info Idade
-        info Descricao
-        info Foto
-        info Status
-    }
+    ADOCAO_INTERESSE["<b>ADOCAO_INTERESSE</b>"]:::associativa
+    PEDIDO_BRECHO["<b>PEDIDO_BRECHO</b>"]:::associativa
 
-    ADOCAO_INTERESSE {
-    }
+    %% Catálogos à Direita
+    CATALOGO_GATOS["<b>CATALOGO_GATOS</b><hr/>info | Nome_Gato<br/>info | Idade<br/>info | Descricao<br/>info | Foto<br/>info | Status"]:::entidade
 
-    PRODUTO_BRECHO {
-        info Nome_Item
-        info Preco
-        info Descricao
-        info Imagem
-    }
+    PRODUTO_BRECHO["<b>PRODUTO_BRECHO</b><hr/>info | Nome_Item<br/>info | Preco<br/>info | Descricao<br/>info | Imagem"]:::entidade
 
-    PEDIDO_BRECHO {
-    }
+    %% Relacionamentos Horizontais (1 para 0..N)
+    USUARIO -->|"1 : se cadastra : 0..*"| VOLUNTARIO
+    USUARIO -->|"1 : se cadastra : 0..*"| EMPRESA_PARCEIRA
+    USUARIO -->|"1 : acessa informações : 0..*"| FINANCEIRO
+    USUARIO -->|"1 : acessa informações : 0..*"| CONTEUDO_ONG
 
-    %% Relacionamentos 1 para 0..N a partir de USUARIO
-    USUARIO ||--o{ VOLUNTARIO : "se cadastra"
-    USUARIO ||--o{ EMPRESA_PARCEIRA : "se cadastra"
-    USUARIO ||--o{ FINANCEIRO : "acessa informações"
-    USUARIO ||--o{ CONTEUDO_ONG : "acessa informações"
+    %% Relacionamentos Horizontais N:N via Associativas
+    USUARIO -->|"1 : tem interesse : 0..*"| ADOCAO_INTERESSE
+    ADOCAO_INTERESSE <-->|"0..* : recebe : 1"| CATALOGO_GATOS
 
-    %% Relacionamentos N para N resolvidos pelas tabelas associativas
-    USUARIO ||--o{ ADOCAO_INTERESSE : "tem interesse"
-    CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
-
-    USUARIO ||--o{ PEDIDO_BRECHO : "tem interesse"
-    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "recebe"
+    USUARIO -->|"1 : tem interesse : 0..*"| PEDIDO_BRECHO
+    PEDIDO_BRECHO <-->|"0..* : recebe : 1"| PRODUTO_BRECHO
 ```
 ---
 
