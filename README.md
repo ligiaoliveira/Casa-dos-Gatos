@@ -374,7 +374,15 @@ stateDiagram-v2
     ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Dados válidos
     ValidandoEmpresa --> ErroEmpresa : Dados inválidos
     ErroEmpresa --> FormEmpresa : Corrigir dados
-    SolicitacaoEmpresaEnviada -->
+    SolicitacaoEmpresaEnviada --> [*]
+    VisualizandoEmpresas --> [*]
+
+    %% Fluxo 6: Contato e Consultas Públicas
+    Contato --> EnviandoMensagem
+    EnviandoMensagem --> MensagemEnviada
+    MensagemEnviada --> [*]
+    VisualizandoTransparencia --> [*]
+    VisualizandoVoluntarios --> [*]
 ```
 
 ---
