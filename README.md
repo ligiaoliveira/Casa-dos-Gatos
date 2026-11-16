@@ -364,6 +364,89 @@ stateDiagram-v2
 ### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
 sequenceDiagram
+    participant Usuario as Usuário
+    participant Empresa
+    participant Formulario as Formulário
+    participant Site
+    participant Sistema
+    participant BancoDeDados as Banco de Dados
+    participant PIX
+
+    alt Fluxo 1: Adotar
+        Usuario ->> Site: Escolhe o Menu "Adoção"
+        Site ->> BancoDeDados: Procura Gatos Disponíveis
+        BancoDeDados -->> Site: Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
+        Site -->> Usuario: Repassa ID Para a Pagina Do Usuario
+        Usuario ->> Site: Escolhe o Gato
+        Site ->> BancoDeDados: Procura Horario de Atendimento Disponivel
+        BancoDeDados -->> Site: Envia Horários De Atendimento
+        Site -->> Usuario: Mostra Horarios Disponiveis Para Atendimento
+        Usuario ->> Site: Escolhe Horario
+        Site -->> Usuario: Envia Mensagem "Data Marcada! Até Logo"
+
+    else Fluxo 2: Doar
+        Usuario ->> Site: Escolhe Menu "Doação"
+        Site -->> Usuario: Exibe Aba "Faça uma Doação"
+        Site ->> BancoDeDados: Pede ID da Conta Bancaria Da ONG
+        BancoDeDados -->> Site: Envia ID Em Forma De QRcode Para Envio Do Valor que Desejar
+        Site -->> Usuario: Exibe QRcode Na Tela Com Mensagem "Escanele o QRcode Para Enviar a Doação"
+        Usuario ->> Site: Escaneia QRcode
+        Usuario ->> Site: Insere o Valor Desejado
+        Site ->> BancoDeDados: Envia a Transação
+        BancoDeDados -->> BancoDeDados: Guarda o Valor No Banco
+        Site -->> Usuario: Envia Mensagem "Doação Realizada Com Sucesso!"
+
+    else Fluxo 3: Brechó
+        Usuario ->> Site: Seleciona Menu "Brechó"
+        Site -->> Usuario: Exibe Produtos
+        Usuario ->> Site: Adiciona Produto ao Carrinho
+        Site ->> BancoDeDados: Atualiza Carrinho
+        BancoDeDados -->> Site: Carrinho Atualizado
+
+        alt Usuário continua comprando
+            Usuario ->> Site: Fecha Sacola e Continua Comprando
+            Site -->> Usuario: Exibe Catálogo Novamente
+        else Usuário finaliza compra
+            Usuario ->> Site: Finaliza Compra
+            Site ->> BancoDeDados: Solicita Resumo do Pedido
+            BancoDeDados -->> Site: Retorna Resumo do Pedido e Valor Total
+            Usuario ->> Site: Escolhe Método de Pagamento
+            BancoDeDados ->> PIX: Gera Pagamento de Acordo com o Método Escolhido
+            PIX -->> BancoDeDados: Retorna Forma de Pagamento
+            BancoDeDados -->> Site: Envia Forma de Pagamento
+            Site -->> Usuario: Mostra Forma de Pagamento e Valor
+            Usuario ->> PIX: Realiza Pagamento
+            Usuario ->> Site: Clica em "Já paguei"
+            Site ->> BancoDeDados: Verifica Pagamento
+            BancoDeDados ->> PIX: Consulta Status do Pagamento
+            PIX -->> BancoDeDados: Pagamento Confirmado
+            BancoDeDados -->> Site: Libera Confirmação
+            Site -->> Usuario: Exibe página de Pagamento Confirmado
+        else Usuário volta ao carrinho
+            Usuario ->> Site: Clica em "Voltar ao carrinho"
+            Site -->> Usuario: Exibe Carrinho Novamente
+        end
+
+    else Fluxo 4: Empresa Parceira
+        Empresa ->> Formulario: Preenche Dados da Empresa
+        Empresa ->> Formulario: Informa Contato e Mensagem
+        Empresa ->> Formulario: Clica em "Enviar contato"
+        Formulario ->> Sistema: Envia Informações
+        Sistema ->> Sistema: Validar dados
+
+        alt Dados válidos
+            Sistema ->> BancoDeDados: Salvar Solicitação
+            BancoDeDados ->> Sistema: Confirma Salvamento
+            Sistema ->> Empresa: Contato Enviado com Sucesso
+        else Dados inválidos
+            Sistema ->> Empresa: Exibir Mensagem de Erro
+        end
+    end
+```
+---
+
+```mermaid
+sequenceDiagram
 participant U as Usuario
 participant S as Site
 participant B as BancoDeDados
