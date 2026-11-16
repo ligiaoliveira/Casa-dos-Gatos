@@ -174,7 +174,6 @@ flowchart TD
 ---
 
 ### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_voluntario.md)
-
 ```mermaid
 flowchart TD
     %% Estilo para melhorar nitidez e visual UML
@@ -221,7 +220,6 @@ flowchart TD
 ---
 
 ### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/casos_admin.md)
-
 ```mermaid
 flowchart TD
     %% Estilo para melhorar nitidez e visual UML
@@ -387,7 +385,7 @@ stateDiagram-v2
 
 ---
 
-### 🙋 Voluntário [(LinkRaw)](https://www.google.com/search?q=https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/estados_voluntario.md)
+### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/estados_voluntario.md)
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'fontSize': '17px', 'fontFamily': 'arial', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#0f172a', 'lineColor': '#334155', 'edgeLabelBackground': '#f8fafc'}, 'state': {'nodeSpacing': 75, 'rankSpacing': 70, 'padding': 16}, 'flowchart': {'nodeSpacing': 75, 'rankSpacing': 70}}}%%
 stateDiagram-v2
