@@ -261,7 +261,7 @@ flowchart TD
 
 ### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#1e1b4b', 'lineColor': '#475569'}, 'flowchart': {'nodeSpacing': 50, 'rankSpacing': 65}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '18px', 'fontFamily': 'arial', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#0f172a', 'lineColor': '#334155', 'edgeLabelBackground': '#f8fafc'}, 'flowchart': {'nodeSpacing': 25, 'rankSpacing': 55, 'curve': 'basis'}}}%%
 stateDiagram-v2
     direction TB
 
@@ -274,38 +274,38 @@ stateDiagram-v2
     state "Visualizando Gatos" as VisualizandoGatos
     state "Filtrando Gatos" as FiltrandoGatos
     state "Detalhes do Gato" as DetalhesGato
-    state "Escolhendo Horário de Atendimento" as EscolhendoHorario
+    state "Escolhendo Horário" as EscolhendoHorario
     state "Visita Agendada" as VisitaAgendada
 
     %% 2. Estados de Brechó
     state "Visualizando Brechó" as VisualizandoBrecho
     state "Detalhes do Produto" as DetalhesProduto
     state "Carrinho de Compras" as CarrinhoCompras
-    state "Selecionando Pagamento (PIX, Boleto, Cartão)" as SelecionandoPagamentoBrecho
-    state "Processando / Aguardando Pagamento" as AguardandoPagamentoBrecho
+    state "Pagamento (PIX, Boleto, Cartão)" as SelecionandoPagamentoBrecho
+    state "Processando Pagamento" as AguardandoPagamentoBrecho
     state "Pagamento Confirmado" as PagamentoConfirmado
     state "Pagamento Recusado / Expirado" as PagamentoFalhouBrecho
     state "Contato via WhatsApp" as WhatsApp
 
     %% 3. Estados de Doação
     state "Visualizando Doação" as VisualizandoDoacao
-    state "Inserindo Valor e Método (PIX, Boleto, Cartão)" as MetodoDoacao
-    state "Processando / Aguardando Doação" as AguardandoDoacao
+    state "Valor e Método (PIX, Boleto, Cartão)" as MetodoDoacao
+    state "Processando Doação" as AguardandoDoacao
     state "Doação Realizada" as DoacaoRealizada
-    state "Visualizando Lista de Itens Aceitos" as ListaItens
+    state "Lista de Itens Aceitos" as ListaItens
 
     %% 4. Estados de Voluntariado
     state "Visualizando Voluntariado" as Voluntariado
-    state "Preenchendo Formulário Voluntário" as FormVoluntario
+    state "Formulário Voluntário" as FormVoluntario
     state "Candidatura Enviada" as CandidaturaVolEnviada
-    state "Aguardando Aprovação (Voluntário)" as AguardandoVol
+    state "Aguardando Aprovação" as AguardandoVol
     state "Voluntário Aprovado" as VolAprovado
     state "Voluntário Rejeitado" as VolRejeitado
 
     %% 5. Estados de Empresa Parceira
-    state "Visualizando Empresas Parceiras" as VisualizandoEmpresas
-    state "Preenchendo Formulário Parceiro" as FormEmpresa
-    state "Validando Dados da Empresa" as ValidandoEmpresa
+    state "Empresas Parceiras" as VisualizandoEmpresas
+    state "Formulário Parceiro" as FormEmpresa
+    state "Validando Dados" as ValidandoEmpresa
     state "Solicitação Enviada" as SolicitacaoEmpresaEnviada
     state "Erro de Validação" as ErroEmpresa
 
@@ -318,62 +318,62 @@ stateDiagram-v2
     [*] --> VisitandoSite
 
     %% Navegação a partir da Página Inicial
-    VisitandoSite --> VisualizandoGatos : Acessar adoção
-    VisitandoSite --> VisualizandoBrecho : Acessar brechó
-    VisitandoSite --> VisualizandoDoacao : Acessar doações
-    VisitandoSite --> Voluntariado : Acessar voluntariado
-    VisitandoSite --> VisualizandoEmpresas : Acessar empresas parceiras
-    VisitandoSite --> Contato : Acessar contato
-    VisitandoSite --> VisualizandoTransparencia : Acessar transparência
-    VisitandoSite --> VisualizandoVoluntarios : Ver voluntários
+    VisitandoSite --> VisualizandoGatos : Adoção
+    VisitandoSite --> VisualizandoBrecho : Brechó
+    VisitandoSite --> VisualizandoDoacao : Doações
+    VisitandoSite --> Voluntariado : Voluntariado
+    VisitandoSite --> VisualizandoEmpresas : Empresas Parceiras
+    VisitandoSite --> Contato : Contato
+    VisitandoSite --> VisualizandoTransparencia : Transparência
+    VisitandoSite --> VisualizandoVoluntarios : Voluntários
 
     %% Fluxo 1: Adoção
-    VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
+    VisualizandoGatos --> FiltrandoGatos : Filtrar
     FiltrandoGatos --> VisualizandoGatos
     VisualizandoGatos --> DetalhesGato : Ver detalhes
-    DetalhesGato --> EscolhendoHorario : Escolher gato para adotar
-    EscolhendoHorario --> VisitaAgendada : Confirmar horário ("Data Marcada!")
-    DetalhesGato --> Contato : Tirar dúvidas sobre o gato
+    DetalhesGato --> EscolhendoHorario : Adotar gato
+    EscolhendoHorario --> VisitaAgendada : Confirmar horário
+    DetalhesGato --> Contato : Dúvidas
     VisitaAgendada --> [*]
 
-    %% Fluxo 2: Brechó (PIX, Boleto ou Cartão de Débito/Crédito)
+    %% Fluxo 2: Brechó
     VisualizandoBrecho --> DetalhesProduto : Ver produto
     DetalhesProduto --> CarrinhoCompras : Adicionar ao carrinho
-    DetalhesProduto --> WhatsApp : Tirar dúvida via WhatsApp
+    DetalhesProduto --> WhatsApp : Dúvida via WhatsApp
     CarrinhoCompras --> VisualizandoBrecho : Continuar comprando
     CarrinhoCompras --> SelecionandoPagamentoBrecho : Finalizar compra
-    SelecionandoPagamentoBrecho --> CarrinhoCompras : Voltar ao carrinho
-    SelecionandoPagamentoBrecho --> AguardandoPagamentoBrecho : Gerar PIX/Boleto ou inserir Cartão
-    AguardandoPagamentoBrecho --> PagamentoConfirmado : Pagamento aprovado / compensado
-    AguardandoPagamentoBrecho --> PagamentoFalhouBrecho : Cartão recusado ou Boleto/PIX expirado
-    PagamentoFalhouBrecho --> SelecionandoPagamentoBrecho : Tentar outro método
+    SelecionandoPagamentoBrecho --> CarrinhoCompras : Voltar
+    SelecionandoPagamentoBrecho --> AguardandoPagamentoBrecho : Pagar
+    AguardandoPagamentoBrecho --> PagamentoConfirmado : Aprovado
+    AguardandoPagamentoBrecho --> PagamentoFalhouBrecho : Recusado / Expirado
+    PagamentoFalhouBrecho --> SelecionandoPagamentoBrecho : Tentar novamente
     PagamentoConfirmado --> [*]
     WhatsApp --> [*]
 
-    %% Fluxo 3: Doações (PIX, Boleto, Cartão ou Itens)
-    VisualizandoDoacao --> MetodoDoacao : Doação financeira
-    MetodoDoacao --> AguardandoDoacao : Informar valor e escolher PIX, Boleto ou Cartão
-    AguardandoDoacao --> DoacaoRealizada : Transação confirmada
-    AguardandoDoacao --> MetodoDoacao : Falha / tentar novamente
+    %% Fluxo 3: Doações
+    VisualizandoDoacao --> MetodoDoacao : Financeira
+    MetodoDoacao --> AguardandoDoacao : Confirmar
+    AguardandoDoacao --> DoacaoRealizada : Aprovada
+    AguardandoDoacao --> MetodoDoacao : Falha
     VisualizandoDoacao --> ListaItens : Doação de itens
     DoacaoRealizada --> [*]
     ListaItens --> [*]
 
     %% Fluxo 4: Voluntariado
     Voluntariado --> FormVoluntario : Se voluntariar
-    FormVoluntario --> CandidaturaVolEnviada : Enviar formulário
+    FormVoluntario --> CandidaturaVolEnviada : Enviar
     CandidaturaVolEnviada --> AguardandoVol
-    AguardandoVol --> VolAprovado
-    AguardandoVol --> VolRejeitado
+    AguardandoVol --> VolAprovado : Aprovado
+    AguardandoVol --> VolRejeitado : Rejeitado
     VolAprovado --> [*]
     VolRejeitado --> [*]
 
     %% Fluxo 5: Empresa Parceira
-    VisualizandoEmpresas --> FormEmpresa : Se tornar empresa parceira
-    FormEmpresa --> ValidandoEmpresa : Clicar em "Enviar contato"
-    ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Dados válidos
-    ValidandoEmpresa --> ErroEmpresa : Dados inválidos
-    ErroEmpresa --> FormEmpresa : Corrigir dados
+    VisualizandoEmpresas --> FormEmpresa : Se tornar parceira
+    FormEmpresa --> ValidandoEmpresa : Enviar contato
+    ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Válido
+    ValidandoEmpresa --> ErroEmpresa : Inválido
+    ErroEmpresa --> FormEmpresa : Corrigir
     SolicitacaoEmpresaEnviada --> [*]
     VisualizandoEmpresas --> [*]
 
