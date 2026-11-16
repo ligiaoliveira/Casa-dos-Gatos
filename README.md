@@ -588,6 +588,7 @@ S-->>U: Mostra Horarios Disponiveis Para Atendimento
 U->>S: Escolhe Horario
 S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ```
+
 ---
 
 ### 💸 Doar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_doacao.md)
@@ -607,6 +608,7 @@ S->>B: Envia a Transação
 B-->>B:Guarda o Valor No Banco
 S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
 ```
+
 ---
 
 ### 🛍 Brécho [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_brecho.md)
@@ -649,8 +651,10 @@ U->>S: Clica em "Voltar ao carrinho"
 S-->>U: Exibe Carrinho Novamente
 end
 ```
+
 ---
-### Empresa Parceira 🏢
+
+### Empresa Parceira 🏢 [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_EmpresaParceira.md)
 ```mermaid
 sequenceDiagram
     participant E as Empresa
@@ -673,6 +677,7 @@ sequenceDiagram
         S ->> E: Exibir Mensagem de Erro
     end
 ```
+
 ---
 
 ## 📁Diagrama de Entidade/Relacionamento [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_er.md)
@@ -739,6 +744,7 @@ erDiagram
         info Como_Gostaria_de_Ajudar
     }
 ```
+
 ---
 
 ## 📁Diagrama De Classe [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/diagrama_classe.md)
@@ -844,6 +850,8 @@ classDiagram
 ### Conceitual
 <img width="1388" height="805" alt="Modelo-Conceitual" src="https://github.com/user-attachments/assets/7581c985-6dc6-4785-ae49-82701d770940" />
 
+---
+
 ### Lógico
 <img width="1499" height="858" alt="Modelo-Lógico" src="https://github.com/user-attachments/assets/a7923e12-d133-4735-92b0-4663ee1595ef" />
 
@@ -853,23 +861,37 @@ classDiagram
 ### Usuários (Administradores, Voluntários e Comuns)
 <img width="1732" height="221" alt="Screenshot_2-1" src="https://github.com/user-attachments/assets/9123db50-8786-4018-8346-56f14829dc02" />
 
+---
+
 ### Catálogo de Gatos
 <img width="1252" height="184" alt="Screenshot_1" src="https://github.com/user-attachments/assets/cc161eed-9762-4658-902b-7bb7fe6dc050" />
+
+---
 
 ### Produtos do Brechó
 <img width="1117" height="166" alt="Screenshot_2" src="https://github.com/user-attachments/assets/40eaeb32-42c3-4076-90b1-02d453e86216" />
 
+---
+
 ### Voluntários
 <img width="1367" height="94" alt="Screenshot_3" src="https://github.com/user-attachments/assets/ba7af8a2-d07b-472a-bf3a-36c29eedab15" />
+
+---
 
 ### Empresas Parceiras
 <img width="1358" height="112" alt="Screenshot_4" src="https://github.com/user-attachments/assets/20b56878-9068-4d2d-b674-c8f40e3e5dfc" />
 
+---
+
 ### Solicitações de Adoção e Visitas
 <img width="1243" height="130" alt="Screenshot_5" src="https://github.com/user-attachments/assets/eee4f1b0-28a2-4af0-abd1-4c15dced48cf" />
 
+---
+
 ### Pedidos do Brechó
 <img width="1448" height="149" alt="Screenshot_6" src="https://github.com/user-attachments/assets/7676b5bf-9c9d-4346-8463-8f13e393a50c" />
+
+---
 
 ### Transparência Financeira
 <img width="921" height="238" alt="Screenshot_7" src="https://github.com/user-attachments/assets/1d0dfabc-7782-4f4a-a14d-104e31947f40" />
