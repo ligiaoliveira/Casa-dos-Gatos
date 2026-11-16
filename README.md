@@ -413,29 +413,20 @@ stateDiagram-v2
 
 ### 🐈 Adotar [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/sequencia_adocao.md)
 ```mermaid
-flowchart LR
-    classDef usuario fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
-    classDef site fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f,font-weight:bold;
-    classDef banco fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
-
-    %% Etapa 1: Escolha do Menu e Busca de Gatos
-    U1(["👤 Usuario<br/>1. Escolhe o Menu 'Adoção'"]):::usuario
-    S1["🌐 Site<br/>2. Procura Gatos Disponíveis"]:::site
-    B1[("🗄️ BancoDeDados<br/>3. Envia ID Dos Gatos<br/>(Idade, Cor, Raça, Foto)")]:::banco
-    S2["🌐 Site<br/>4. Repassa ID Para a<br/>Página Do Usuário"]:::site
-
-    %% Etapa 2: Escolha do Gato e Busca de Horários
-    U2(["👤 Usuario<br/>5. Escolhe o Gato"]):::usuario
-    S3["🌐 Site<br/>6. Procura Horário de<br/>Atendimento Disponível"]:::site
-    B2[("🗄️ BancoDeDados<br/>7. Envia Horários De<br/>Atendimento")]:::banco
-    S4["🌐 Site<br/>8. Mostra Horários Disponíveis<br/>Para Atendimento"]:::site
-
-    %% Etapa 3: Agendamento Final
-    U3(["👤 Usuario<br/>9. Escolhe Horário"]):::usuario
-    S5(["🌐 Site → 👤 Usuario<br/>10. Envia Mensagem:<br/>'Data Marcada! Até Logo'"]):::site
-
-    %% Conexões Horizontais Sequenciais
-    U1 --> S1 --> B1 -.-> S2 -.-> U2 --> S3 --> B2 -.-> S4 -.-> U3 --> S5
+sequenceDiagram
+participant U as Usuario
+participant S as Site
+participant B as BancoDeDados
+U->>S:Escolhe o Menu "Adoção"
+S->>B:Procura Gatos Disponiveis
+B-->>S:Envia ID Dos Gatos(Idade, Cor, Raça, Foto)
+S-->>U:Repassa ID Para a Pagina Do Usuario
+U->>S:Escolhe o Gato
+S->>B:Procura Horario de Atendimento Disponivel
+B-->>S: Envia Horarios De Atendimento
+S-->>U: Mostra Horarios Disponiveis Para Atendimento
+U->>S: Escolhe Horario
+S-->>U: Envia Mensagem "Data Marcada! Até Logo"
 ```
 ---
 
