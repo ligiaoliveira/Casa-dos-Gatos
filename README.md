@@ -102,6 +102,165 @@ Esse projeto foi pensado não só como atividade acadêmica, mas também como um
 
 ### 👤 Visitante [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_visitante.md)
 ```mermaid
+flowchart TD
+    %% Estilo para melhorar nitidez e visual UML
+    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
+    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
+    classDef subcaso fill:#ffffff,stroke:#9ca3af,stroke-width:1px,color:#374151;
+
+    Visitante([👤 Visitante]):::ator
+
+    subgraph AreaPublica ["Área Pública"]
+        direction TB
+
+        %% Coluna 1: Adoção
+        UC1([Ver gatos para adoção]):::caso
+        UC1_1([Filtrar gatos]):::subcaso
+        UC1_2([Ver detalhes do gato]):::subcaso
+        UC1 --> UC1_1
+        UC1 --> UC1_2
+
+        %% Coluna 2: Brechó
+        UC2([Ver mostruário do brechó]):::caso
+        UC2_1([Ver detalhes do produto]):::subcaso
+        UC2_2([Contato via WhatsApp]):::subcaso
+        UC2 --> UC2_1
+        UC2 --> UC2_2
+
+        %% Coluna 3: Doação
+        UC3([Fazer doação]):::caso
+        UC3_1([Doação financeira]):::subcaso
+        UC3_1_1([Dados bancários para doar]):::subcaso
+        UC3_2([Doação de item]):::subcaso
+        UC3_2_1([Lista de itens aceitos]):::subcaso
+        UC3 --> UC3_1 --> UC3_1_1
+        UC3 --> UC3_2 --> UC3_2_1
+
+        %% Coluna 4: Voluntariado
+        UC4([Se voluntariar]):::caso
+        UC4_1([Formulário voluntário]):::subcaso
+        UC4 --> UC4_1
+
+        %% Coluna 5: Contato
+        UC5([Entrar em contato]):::caso
+        UC5_1([Enviar mensagem]):::subcaso
+        UC5 --> UC5_1
+
+        %% Coluna 6: Empresa Parceira
+        UC6([Se tornar empresa parceira]):::caso
+        UC6_1([Inserir informações]):::subcaso
+        UC6_2([Enviar contato]):::subcaso
+        UC6 --> UC6_1 --> UC6_2
+
+        %% Coluna 7: Consultas Simples
+        UC7([Ver voluntários]):::caso
+        UC8([Ver transparência]):::caso
+    end
+
+    %% Conexões do Visitante espalhadas horizontalmente
+    Visitante --> UC1
+    Visitante --> UC2
+    Visitante --> UC3
+    Visitante --> UC4
+    Visitante --> UC5
+    Visitante --> UC6
+    Visitante --> UC7
+    Visitante --> UC8
+
+    %% Estilo da caixa Área Pública
+    style AreaPublica fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
+```
+
+---
+
+### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_voluntario.md)
+
+```mermaid
+flowchart TD
+    %% Estilo para melhorar nitidez e visual UML
+    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
+    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
+    classDef subcaso fill:#ffffff,stroke:#9ca3af,stroke-width:1px,color:#374151;
+
+    Voluntario([🙋 Voluntário]):::ator
+
+    subgraph AreaVoluntario ["Área do Voluntário"]
+        direction TB
+
+        %% Coluna 1: Consulta Simples
+        UC1([Ver voluntários]):::caso
+
+        %% Coluna 2: Contato
+        UC2([Mídias sociais e contato]):::caso
+        UC2_1([Enviar mensagem]):::subcaso
+        UC2 --> UC2_1
+
+        %% Coluna 3: Doação
+        UC3([Fazer doação]):::caso
+        UC3_1([Doação financeira]):::subcaso
+        UC3_1_1([Dados bancários para doar]):::subcaso
+        UC3_2([Doação de itens]):::subcaso
+        UC3_2_1([Lista de itens aceitos]):::subcaso
+        UC3 --> UC3_1 --> UC3_1_1
+        UC3 --> UC3_2 --> UC3_2_1
+
+        %% Coluna 4: Consulta Simples
+        UC4([Ver empresas parceiras]):::caso
+    end
+
+    %% Conexões do Voluntário espalhadas horizontalmente
+    Voluntario --> UC1
+    Voluntario --> UC2
+    Voluntario --> UC3
+    Voluntario --> UC4
+
+    %% Estilo da caixa Área do Voluntário
+    style AreaVoluntario fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
+```
+
+---
+
+### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/casos_admin.md)
+
+```mermaid
+flowchart TD
+    %% Estilo para melhorar nitidez e visual UML
+    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
+    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
+
+    Administrador([🔐 Administrador]):::ator
+
+    subgraph AreaAdministrador ["Área do Administrador"]
+        direction TB
+
+        UC1([Gerenciar gatos]):::caso
+        UC2([Gerenciar produtos do brechó]):::caso
+        UC3([Gerenciar voluntários]):::caso
+        UC4([Gerenciar doações]):::caso
+        UC5([Publicar transparência]):::caso
+        UC6([Responder mensagens]):::caso
+        UC7([Gerenciar empresas parceiras]):::caso
+    end
+
+    %% Conexões do Administrador espalhadas horizontalmente
+    Administrador --> UC1
+    Administrador --> UC2
+    Administrador --> UC3
+    Administrador --> UC4
+    Administrador --> UC5
+    Administrador --> UC6
+    Administrador --> UC7
+
+    %% Estilo da caixa Área do Administrador
+    style AreaAdministrador fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
+```
+
+---
+
+## Diagrama de Estados
+
+### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
+```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#1e1b4b', 'lineColor': '#475569'}, 'flowchart': {'nodeSpacing': 50, 'rankSpacing': 65}}}%%
 stateDiagram-v2
     direction TB
@@ -215,220 +374,6 @@ stateDiagram-v2
     ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Dados válidos
     ValidandoEmpresa --> ErroEmpresa : Dados inválidos
     ErroEmpresa --> FormEmpresa : Corrigir dados
-    SolicitacaoEmpresaEnviada --> [*]
-    VisualizandoEmpresas --> [*]
-
-    %% Fluxo 6: Contato e Consultas Públicas
-    Contato --> EnviandoMensagem
-    EnviandoMensagem --> MensagemEnviada
-    MensagemEnviada --> [*]
-    VisualizandoTransparencia --> [*]
-    VisualizandoVoluntarios --> [*]
-```
-
----
-
-### 🙋 Voluntário [(LinkRaw)](https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/refs/heads/main/docs/diagramas/casos_voluntario.md)
-
-```mermaid
-flowchart TD
-    %% Estilo para melhorar nitidez e visual UML
-    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
-    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
-    classDef subcaso fill:#ffffff,stroke:#9ca3af,stroke-width:1px,color:#374151;
-
-    Voluntario([🙋 Voluntário]):::ator
-
-    subgraph AreaVoluntario ["Área do Voluntário"]
-        direction TB
-
-        %% Coluna 1: Consulta Simples
-        UC1([Ver voluntários]):::caso
-
-        %% Coluna 2: Contato
-        UC2([Mídias sociais e contato]):::caso
-        UC2_1([Enviar mensagem]):::subcaso
-        UC2 --> UC2_1
-
-        %% Coluna 3: Doação
-        UC3([Fazer doação]):::caso
-        UC3_1([Doação financeira]):::subcaso
-        UC3_1_1([Dados bancários para doar]):::subcaso
-        UC3_2([Doação de itens]):::subcaso
-        UC3_2_1([Lista de itens aceitos]):::subcaso
-        UC3 --> UC3_1 --> UC3_1_1
-        UC3 --> UC3_2 --> UC3_2_1
-
-        %% Coluna 4: Consulta Simples
-        UC4([Ver empresas parceiras]):::caso
-    end
-
-    %% Conexões do Voluntário espalhadas horizontalmente
-    Voluntario --> UC1
-    Voluntario --> UC2
-    Voluntario --> UC3
-    Voluntario --> UC4
-
-    %% Estilo da caixa Área do Voluntário
-    style AreaVoluntario fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
-```
-
----
-
-### 🔐 Administrador [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/casos_admin.md)
-
-```mermaid
-flowchart TD
-    %% Estilo para melhorar nitidez e visual UML
-    classDef ator fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,font-weight:bold;
-    classDef caso fill:#f3f4f6,stroke:#6366f1,stroke-width:1.5px,color:#111827;
-
-    Administrador([🔐 Administrador]):::ator
-
-    subgraph AreaAdministrador ["Área do Administrador"]
-        direction TB
-
-        UC1([Gerenciar gatos]):::caso
-        UC2([Gerenciar produtos do brechó]):::caso
-        UC3([Gerenciar voluntários]):::caso
-        UC4([Gerenciar doações]):::caso
-        UC5([Publicar transparência]):::caso
-        UC6([Responder mensagens]):::caso
-        UC7([Gerenciar empresas parceiras]):::caso
-    end
-
-    %% Conexões do Administrador espalhadas horizontalmente
-    Administrador --> UC1
-    Administrador --> UC2
-    Administrador --> UC3
-    Administrador --> UC4
-    Administrador --> UC5
-    Administrador --> UC6
-    Administrador --> UC7
-
-    %% Estilo da caixa Área do Administrador
-    style AreaAdministrador fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
-```
-
----
-
-## Diagrama de Estados
-
-### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '18px', 'fontFamily': 'arial', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#0f172a', 'lineColor': '#334155', 'edgeLabelBackground': '#f8fafc'}, 'state': {'nodeSpacing': 110, 'rankSpacing': 75, 'padding': 16}, 'flowchart': {'nodeSpacing': 110, 'rankSpacing': 75}}}%%
-stateDiagram-v2
-    direction LR
-
-    %% Estados Principais
-    state "Visitando Site" as VisitandoSite
-    state "Visualizando Transparência" as VisualizandoTransparencia
-    state "Visualizando Voluntários" as VisualizandoVoluntarios
-
-    %% 1. Estados de Adoção
-    state "Visualizando Gatos" as VisualizandoGatos
-    state "Filtrando Gatos" as FiltrandoGatos
-    state "Detalhes do Gato" as DetalhesGato
-    state "Escolhendo Horário" as EscolhendoHorario
-    state "Visita Agendada" as VisitaAgendada
-
-    %% 2. Estados de Brechó
-    state "Visualizando Brechó" as VisualizandoBrecho
-    state "Detalhes do Produto" as DetalhesProduto
-    state "Carrinho de Compras" as CarrinhoCompras
-    state "Pagamento (PIX, Boleto, Cartão)" as SelecionandoPagamentoBrecho
-    state "Processando Pagamento" as AguardandoPagamentoBrecho
-    state "Pagamento Confirmado" as PagamentoConfirmado
-    state "Pagamento Recusado / Expirado" as PagamentoFalhouBrecho
-    state "Contato via WhatsApp" as WhatsApp
-
-    %% 3. Estados de Doação
-    state "Visualizando Doação" as VisualizandoDoacao
-    state "Valor e Método (PIX, Boleto, Cartão)" as MetodoDoacao
-    state "Processando Doação" as AguardandoDoacao
-    state "Doação Realizada" as DoacaoRealizada
-    state "Lista de Itens Aceitos" as ListaItens
-
-    %% 4. Estados de Voluntariado
-    state "Visualizando Voluntariado" as Voluntariado
-    state "Formulário Voluntário" as FormVoluntario
-    state "Candidatura Enviada" as CandidaturaVolEnviada
-    state "Aguardando Aprovação" as AguardandoVol
-    state "Voluntário Aprovado" as VolAprovado
-    state "Voluntário Rejeitado" as VolRejeitado
-
-    %% 5. Estados de Empresa Parceira
-    state "Empresas Parceiras" as VisualizandoEmpresas
-    state "Formulário Parceiro" as FormEmpresa
-    state "Validando Dados" as ValidandoEmpresa
-    state "Solicitação Enviada" as SolicitacaoEmpresaEnviada
-    state "Erro de Validação" as ErroEmpresa
-
-    %% 6. Estados de Contato
-    state "Contato" as Contato
-    state "Enviando Mensagem" as EnviandoMensagem
-    state "Mensagem Enviada" as MensagemEnviada
-
-    %% Início
-    [*] --> VisitandoSite
-
-    %% Navegação a partir da Página Inicial
-    VisitandoSite --> VisualizandoGatos : Adoção
-    VisitandoSite --> VisualizandoBrecho : Brechó
-    VisitandoSite --> VisualizandoDoacao : Doações
-    VisitandoSite --> Voluntariado : Voluntariado
-    VisitandoSite --> VisualizandoEmpresas : Empresas Parceiras
-    VisitandoSite --> Contato : Contato
-    VisitandoSite --> VisualizandoTransparencia : Transparência
-    VisitandoSite --> VisualizandoVoluntarios : Voluntários
-
-    %% Fluxo 1: Adoção
-    VisualizandoGatos --> FiltrandoGatos : Filtrar
-    FiltrandoGatos --> VisualizandoGatos
-    VisualizandoGatos --> DetalhesGato : Ver detalhes
-    DetalhesGato --> EscolhendoHorario : Adotar gato
-    EscolhendoHorario --> VisitaAgendada : Confirmar horário
-    DetalhesGato --> Contato : Dúvidas
-    VisitaAgendada --> [*]
-
-    %% Fluxo 2: Brechó
-    VisualizandoBrecho --> DetalhesProduto : Ver produto
-    DetalhesProduto --> CarrinhoCompras : Adicionar ao carrinho
-    DetalhesProduto --> WhatsApp : Dúvida via WhatsApp
-    CarrinhoCompras --> VisualizandoBrecho : Continuar comprando
-    CarrinhoCompras --> SelecionandoPagamentoBrecho : Finalizar compra
-    SelecionandoPagamentoBrecho --> CarrinhoCompras : Voltar
-    SelecionandoPagamentoBrecho --> AguardandoPagamentoBrecho : Pagar
-    AguardandoPagamentoBrecho --> PagamentoConfirmado : Aprovado
-    AguardandoPagamentoBrecho --> PagamentoFalhouBrecho : Recusado / Expirado
-    PagamentoFalhouBrecho --> SelecionandoPagamentoBrecho : Tentar novamente
-    PagamentoConfirmado --> [*]
-    WhatsApp --> [*]
-
-    %% Fluxo 3: Doações
-    VisualizandoDoacao --> MetodoDoacao : Financeira
-    MetodoDoacao --> AguardandoDoacao : Confirmar
-    AguardandoDoacao --> DoacaoRealizada : Aprovada
-    AguardandoDoacao --> MetodoDoacao : Falha
-    VisualizandoDoacao --> ListaItens : Doação de itens
-    DoacaoRealizada --> [*]
-    ListaItens --> [*]
-
-    %% Fluxo 4: Voluntariado
-    Voluntariado --> FormVoluntario : Se voluntariar
-    FormVoluntario --> CandidaturaVolEnviada : Enviar
-    CandidaturaVolEnviada --> AguardandoVol
-    AguardandoVol --> VolAprovado : Aprovado
-    AguardandoVol --> VolRejeitado : Rejeitado
-    VolAprovado --> [*]
-    VolRejeitado --> [*]
-
-    %% Fluxo 5: Empresa Parceira
-    VisualizandoEmpresas --> FormEmpresa : Se tornar parceira
-    FormEmpresa --> ValidandoEmpresa : Enviar contato
-    ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Válido
-    ValidandoEmpresa --> ErroEmpresa : Inválido
-    ErroEmpresa --> FormEmpresa : Corrigir
     SolicitacaoEmpresaEnviada --> [*]
     VisualizandoEmpresas --> [*]
 
