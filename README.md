@@ -281,15 +281,16 @@ stateDiagram-v2
     state "Visualizando Brechó" as VisualizandoBrecho
     state "Detalhes do Produto" as DetalhesProduto
     state "Carrinho de Compras" as CarrinhoCompras
-    state "Selecionando Pagamento (PIX)" as SelecionandoPagamento
-    state "Aguardando Pagamento" as AguardandoPagamento
+    state "Selecionando Pagamento (PIX, Boleto, Cartão)" as SelecionandoPagamentoBrecho
+    state "Processando / Aguardando Pagamento" as AguardandoPagamentoBrecho
     state "Pagamento Confirmado" as PagamentoConfirmado
+    state "Pagamento Recusado / Expirado" as PagamentoFalhouBrecho
     state "Contato via WhatsApp" as WhatsApp
 
     %% 3. Estados de Doação
     state "Visualizando Doação" as VisualizandoDoacao
-    state "Visualizando QR Code / Dados Bancários" as DadosDoacao
-    state "Inserindo Valor da Doação" as InserindoValor
+    state "Inserindo Valor e Método (PIX, Boleto, Cartão)" as MetodoDoacao
+    state "Processando / Aguardando Doação" as AguardandoDoacao
     state "Doação Realizada" as DoacaoRealizada
     state "Visualizando Lista de Itens Aceitos" as ListaItens
 
@@ -326,7 +327,7 @@ stateDiagram-v2
     VisitandoSite --> VisualizandoTransparencia : Acessar transparência
     VisitandoSite --> VisualizandoVoluntarios : Ver voluntários
 
-    %% Fluxo 1: Adoção (integrado com Sequência de Adoção)
+    %% Fluxo 1: Adoção
     VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
     FiltrandoGatos --> VisualizandoGatos
     VisualizandoGatos --> DetalhesGato : Ver detalhes
@@ -335,22 +336,25 @@ stateDiagram-v2
     DetalhesGato --> Contato : Tirar dúvidas sobre o gato
     VisitaAgendada --> [*]
 
-    %% Fluxo 2: Brechó (integrado com Sequência de Brechó e Caso de Uso)
+    %% Fluxo 2: Brechó (PIX, Boleto ou Cartão de Débito/Crédito)
     VisualizandoBrecho --> DetalhesProduto : Ver produto
     DetalhesProduto --> CarrinhoCompras : Adicionar ao carrinho
     DetalhesProduto --> WhatsApp : Tirar dúvida via WhatsApp
     CarrinhoCompras --> VisualizandoBrecho : Continuar comprando
-    CarrinhoCompras --> SelecionandoPagamento : Finalizar compra
-    SelecionandoPagamento --> CarrinhoCompras : Voltar ao carrinho
-    SelecionandoPagamento --> AguardandoPagamento : Gerar pagamento PIX
-    AguardandoPagamento --> PagamentoConfirmado : Clicar em "Já paguei" (Confirmado)
+    CarrinhoCompras --> SelecionandoPagamentoBrecho : Finalizar compra
+    SelecionandoPagamentoBrecho --> CarrinhoCompras : Voltar ao carrinho
+    SelecionandoPagamentoBrecho --> AguardandoPagamentoBrecho : Gerar PIX/Boleto ou inserir Cartão
+    AguardandoPagamentoBrecho --> PagamentoConfirmado : Pagamento aprovado / compensado
+    AguardandoPagamentoBrecho --> PagamentoFalhouBrecho : Cartão recusado ou Boleto/PIX expirado
+    PagamentoFalhouBrecho --> SelecionandoPagamentoBrecho : Tentar outro método
     PagamentoConfirmado --> [*]
     WhatsApp --> [*]
 
-    %% Fluxo 3: Doações (integrado com Sequência de Doar e Caso de Uso)
-    VisualizandoDoacao --> DadosDoacao : Doação financeira
-    DadosDoacao --> InserindoValor : Escanear QR Code
-    InserindoValor --> DoacaoRealizada : Confirmar transação
+    %% Fluxo 3: Doações (PIX, Boleto, Cartão ou Itens)
+    VisualizandoDoacao --> MetodoDoacao : Doação financeira
+    MetodoDoacao --> AguardandoDoacao : Informar valor e escolher PIX, Boleto ou Cartão
+    AguardandoDoacao --> DoacaoRealizada : Transação confirmada
+    AguardandoDoacao --> MetodoDoacao : Falha / tentar novamente
     VisualizandoDoacao --> ListaItens : Doação de itens
     DoacaoRealizada --> [*]
     ListaItens --> [*]
@@ -364,21 +368,13 @@ stateDiagram-v2
     VolAprovado --> [*]
     VolRejeitado --> [*]
 
-    %% Fluxo 5: Empresa Parceira (integrado com Sequência de Empresa Parceira)
+    %% Fluxo 5: Empresa Parceira
     VisualizandoEmpresas --> FormEmpresa : Se tornar empresa parceira
     FormEmpresa --> ValidandoEmpresa : Clicar em "Enviar contato"
     ValidandoEmpresa --> SolicitacaoEmpresaEnviada : Dados válidos
     ValidandoEmpresa --> ErroEmpresa : Dados inválidos
     ErroEmpresa --> FormEmpresa : Corrigir dados
-    SolicitacaoEmpresaEnviada --> [*]
-    VisualizandoEmpresas --> [*]
-
-    %% Fluxo 6: Contato e Consultas Públicas
-    Contato --> EnviandoMensagem
-    EnviandoMensagem --> MensagemEnviada
-    MensagemEnviada --> [*]
-    VisualizandoTransparencia --> [*]
-    VisualizandoVoluntarios --> [*]
+    SolicitacaoEmpresaEnviada -->
 ```
 
 ---
