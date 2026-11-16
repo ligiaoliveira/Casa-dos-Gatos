@@ -260,50 +260,77 @@ flowchart TD
 ## Diagrama de Estados
 
 ### 👤 Visitante [(LinkRaw)](https://github.com/ligiaoliveira/Casa-dos-Gatos/raw/refs/heads/main/docs/diagramas/estados_visitante.md)
-
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px', 'primaryColor': '#eef2ff', 'primaryBorderColor': '#4f46e5', 'primaryTextColor': '#1e1b4b', 'lineColor': '#475569'}, 'flowchart': {'nodeSpacing': 65, 'rankSpacing': 75}}}%%
 stateDiagram-v2
+    direction TB
 
-  [*] --> VisitandoSite
+    %% Estados com nomes formatados para leitura nítida
+    state "Visitando Site" as VisitandoSite
+    state "Visualizando Brechó" as VisualizandoBrecho
+    state "Detalhes do Produto" as DetalhesProduto
+    state "WhatsApp" as WhatsApp
 
-  VisitandoSite --> VisualizandoGatos : Acessar adoção
-  VisitandoSite --> VisualizandoBrechó : Acessar brechó
-  VisitandoSite --> VisualizandoDoação : Acessar doações
-  VisitandoSite --> Voluntariado : Acessar voluntariado
-  VisitandoSite --> VisualizandoEmpresasParceiras : Acessar Empresas Parceiras
-  VisitandoSite --> Contato : Acessar contato
+    state "Visualizando Gatos" as VisualizandoGatos
+    state "Filtrando Gatos" as FiltrandoGatos
+    state "Detalhes do Gato" as DetalhesGato
 
-  %% Gatos
-  VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
-  FiltrandoGatos --> VisualizandoGatos
-  VisualizandoGatos --> DetalhesGato : Ver detalhes
-  DetalhesGato --> Contato : Interesse no gato
+    state "Contato" as Contato
+    state "Enviando Mensagem" as EnviandoMensagem
+    state "Mensagem Enviada" as MensagemEnviada
 
-  %% Brechó
-  VisualizandoBrechó --> DetalhesProduto : Ver produto
-  DetalhesProduto --> WhatsApp : Ir para o contato
-  WhatsApp --> [*]
+    state "Visualizando Doação" as VisualizandoDoacao
+    state "Visualizando Dados Bancários" as VisualizandoDadosBancarios
 
-  %% Doação
-  VisualizandoDoação --> VisualizandoDadosBancários : Ver dados para doação
-  VisualizandoDadosBancários --> [*]
+    state "Voluntariado" as Voluntariado
+    state "Preenchendo Formulário" as PreenchendoFormulario
+    state "Enviado" as Enviado
+    state "Aguardando Aprovação" as AguardandoAprovacao
+    state "Aprovado" as Aprovado
+    state "Rejeitado" as Rejeitado
 
-  %% Voluntariado
-  Voluntariado --> PreenchendoFormulário
-  PreenchendoFormulário --> Enviado
-  Enviado --> AguardandoAprovação
-  AguardandoAprovação --> Aprovado
-  AguardandoAprovação --> Rejeitado
-  Aprovado --> [*]
-  Rejeitado --> [*]
+    state "Visualizando Empresas Parceiras" as VisualizandoEmpresasParceiras
 
-  %% Empresas Parceiras
-  VisualizandoEmpresasParceiras --> [*]
+    %% Início
+    [*] --> VisitandoSite
 
-  %% Contato
-  Contato --> EnviandoMensagem
-  EnviandoMensagem --> MensagemEnviada
-  MensagemEnviada --> [*]
+    %% Ramificações principais a partir de VisitandoSite
+    VisitandoSite --> VisualizandoBrecho : Acessar brechó
+    VisitandoSite --> VisualizandoGatos : Acessar adoção
+    VisitandoSite --> Contato : Acessar contato
+    VisitandoSite --> VisualizandoDoacao : Acessar doações
+    VisitandoSite --> Voluntariado : Acessar voluntariado
+    VisitandoSite --> VisualizandoEmpresasParceiras : Acessar Empresas Parceiras
+
+    %% 1. Fluxo Brechó
+    VisualizandoBrecho --> DetalhesProduto : Ver produto
+    DetalhesProduto --> WhatsApp : Ir para o contato
+    WhatsApp --> [*]
+
+    %% 2. Fluxo Adoção & Contato
+    VisualizandoGatos --> FiltrandoGatos : Aplicar filtro
+    FiltrandoGatos --> VisualizandoGatos
+    VisualizandoGatos --> DetalhesGato : Ver detalhes
+    DetalhesGato --> Contato : Interesse no gato
+    Contato --> EnviandoMensagem
+    EnviandoMensagem --> MensagemEnviada
+    MensagemEnviada --> [*]
+
+    %% 3. Fluxo Doações
+    VisualizandoDoacao --> VisualizandoDadosBancarios : Ver dados para doação
+    VisualizandoDadosBancarios --> [*]
+
+    %% 4. Fluxo Voluntariado
+    Voluntariado --> PreenchendoFormulario
+    PreenchendoFormulario --> Enviado
+    Enviado --> AguardandoAprovacao
+    AguardandoAprovacao --> Aprovado
+    AguardandoAprovacao --> Rejeitado
+    Aprovado --> [*]
+    Rejeitado --> [*]
+
+    %% 5. Fluxo Empresas Parceiras
+    VisualizandoEmpresasParceiras --> [*]
 ```
 
 ---
